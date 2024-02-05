@@ -22,7 +22,7 @@ var credentials = {
   port: 5432,
   user: 'postgres',
   password: 'Sellcenter2024',
-  database: 'postres'
+  database: 'postgres'
 };
 var pool = new Pool(credentials);
 
