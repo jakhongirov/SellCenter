@@ -51,18 +51,18 @@ module.exports = {
             const user = await model.foundUserById(id)
 
             if (user) {
-               const carCount = await model.userCarCount(user.user_id)
-               const motorcycleCount = await model.userMotorcycleCount(user.user_id)
-               const motorhomeCount = await model.userMotorhomeCount(user.user_id)
-               const truckCount = await model.userTruckCount(user.user_id)
-               const trailerCount = await model.userTrailerCount(user.user_id)
-               const vanCount = await model.userVanCount(user.user_id)
-               const semiTruckCount = await model.userSemiTruckCount(user.user_id)
-               const semiTrailerCount = await model.userSemiTrailerCount(user.user_id)
-               const coacheCount = await model.userCoacheCount(user.user_id)
-               const agriculturalVehiclesCount = await model.userAgriculturalCount(user.user_id)
-               const constructionMachineCount = await model.userConstructionCount(user.user_id)
-               const forkliftTrucksCount = await model.userForkliftTrucksCount(user.user_id)
+               const carCount = await model.userCarCount(user?.user_id)
+               const motorcycleCount = await model.userMotorcycleCount(user?.user_id)
+               const motorhomeCount = await model.userMotorhomeCount(user?.user_id)
+               const truckCount = await model.userTruckCount(user?.user_id)
+               const trailerCount = await model.userTrailerCount(user?.user_id)
+               const vanCount = await model.userVanCount(user?.user_id)
+               const semiTruckCount = await model.userSemiTruckCount(user?.user_id)
+               const semiTrailerCount = await model.userSemiTrailerCount(user?.user_id)
+               const coacheCount = await model.userCoacheCount(user?.user_id)
+               const agriculturalVehiclesCount = await model.userAgriculturalCount(user?.user_id)
+               const constructionMachineCount = await model.userConstructionCount(user?.user_id)
+               const forkliftTrucksCount = await model.userForkliftTrucksCount(user?.user_id)
 
                return res.json({
                   status: 200,
