@@ -8,9 +8,9 @@ const { connection } = require("../config");
 const credentials = {
   host: 'localhost',
   port: 5432,
-  user: 'sellcent_user',
-  password: 'sellcenter@2023',
-  database: 'sellcent_database'
+  user: 'postgres',
+  password: 'Sellcenter2024',
+  database: 'postres'
 };
 
 const pool = new Pool(credentials);
