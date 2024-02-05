@@ -1,0 +1,578 @@
+[
+	{
+		"motorcycle_make_id": "11",
+		"motorcycle_make_name": "AGM MOTORS"
+	},
+	{
+		"motorcycle_make_id": "8",
+		"motorcycle_make_name": "Access Motor"
+	},
+	{
+		"motorcycle_make_id": "9",
+		"motorcycle_make_name": "Adly"
+	},
+	{
+		"motorcycle_make_id": "10",
+		"motorcycle_make_name": "Aeon"
+	},
+	{
+		"motorcycle_make_id": "12",
+		"motorcycle_make_name": "Aixam"
+	},
+	{
+		"motorcycle_make_id": "13",
+		"motorcycle_make_name": "American Ironhorse"
+	},
+	{
+		"motorcycle_make_id": "14",
+		"motorcycle_make_name": "Aprilia"
+	},
+	{
+		"motorcycle_make_id": "15",
+		"motorcycle_make_name": "Arctic Cat"
+	},
+	{
+		"motorcycle_make_id": "26",
+		"motorcycle_make_name": "BMW"
+	},
+	{
+		"motorcycle_make_id": "30",
+		"motorcycle_make_name": "BRP"
+	},
+	{
+		"motorcycle_make_id": "31",
+		"motorcycle_make_name": "BSA"
+	},
+	{
+		"motorcycle_make_id": "16",
+		"motorcycle_make_name": "Baotian"
+	},
+	{
+		"motorcycle_make_id": "17",
+		"motorcycle_make_name": "Barossa"
+	},
+	{
+		"motorcycle_make_id": "18",
+		"motorcycle_make_name": "Bashan"
+	},
+	{
+		"motorcycle_make_id": "19",
+		"motorcycle_make_name": "Beeline"
+	},
+	{
+		"motorcycle_make_id": "20",
+		"motorcycle_make_name": "Benelli"
+	},
+	{
+		"motorcycle_make_id": "21",
+		"motorcycle_make_name": "Beta"
+	},
+	{
+		"motorcycle_make_id": "22",
+		"motorcycle_make_name": "Big Dog Motorcycles"
+	},
+	{
+		"motorcycle_make_id": "24",
+		"motorcycle_make_name": "Bimota"
+	},
+	{
+		"motorcycle_make_id": "25",
+		"motorcycle_make_name": "Blata"
+	},
+	{
+		"motorcycle_make_id": "27",
+		"motorcycle_make_name": "Bombardier"
+	},
+	{
+		"motorcycle_make_id": "28",
+		"motorcycle_make_name": "Boom"
+	},
+	{
+		"motorcycle_make_id": "29",
+		"motorcycle_make_name": "Brixton"
+	},
+	{
+		"motorcycle_make_id": "32",
+		"motorcycle_make_name": "Buell"
+	},
+	{
+		"motorcycle_make_id": "33",
+		"motorcycle_make_name": "Burelli"
+	},
+	{
+		"motorcycle_make_id": "38",
+		"motorcycle_make_name": "CFMOTO"
+	},
+	{
+		"motorcycle_make_id": "39",
+		"motorcycle_make_name": "CPI"
+	},
+	{
+		"motorcycle_make_id": "34",
+		"motorcycle_make_name": "Cagiva"
+	},
+	{
+		"motorcycle_make_id": "35",
+		"motorcycle_make_name": "Can Am"
+	},
+	{
+		"motorcycle_make_id": "37",
+		"motorcycle_make_name": "Cectek"
+	},
+	{
+		"motorcycle_make_id": "43",
+		"motorcycle_make_name": "DKW"
+	},
+	{
+		"motorcycle_make_id": "44",
+		"motorcycle_make_name": "DREEMS"
+	},
+	{
+		"motorcycle_make_id": "40",
+		"motorcycle_make_name": "Daelim"
+	},
+	{
+		"motorcycle_make_id": "41",
+		"motorcycle_make_name": "Derbi"
+	},
+	{
+		"motorcycle_make_id": "42",
+		"motorcycle_make_name": "Dinli"
+	},
+	{
+		"motorcycle_make_id": "45",
+		"motorcycle_make_name": "Ducati"
+	},
+	{
+		"motorcycle_make_id": "49",
+		"motorcycle_make_name": "E-Ton"
+	},
+	{
+		"motorcycle_make_id": "48",
+		"motorcycle_make_name": "Energica"
+	},
+	{
+		"motorcycle_make_id": "50",
+		"motorcycle_make_name": "Explorer"
+	},
+	{
+		"motorcycle_make_id": "56",
+		"motorcycle_make_name": "FB Mondial"
+	},
+	{
+		"motorcycle_make_id": "51",
+		"motorcycle_make_name": "Fantic"
+	},
+	{
+		"motorcycle_make_id": "61",
+		"motorcycle_make_name": "GG Motorradtechnik"
+	},
+	{
+		"motorcycle_make_id": "63",
+		"motorcycle_make_name": "GOES"
+	},
+	{
+		"motorcycle_make_id": "57",
+		"motorcycle_make_name": "Gasgas"
+	},
+	{
+		"motorcycle_make_id": "60",
+		"motorcycle_make_name": "Generic"
+	},
+	{
+		"motorcycle_make_id": "62",
+		"motorcycle_make_name": "Gilera"
+	},
+	{
+		"motorcycle_make_id": "64",
+		"motorcycle_make_name": "Gorilla"
+	},
+	{
+		"motorcycle_make_id": "65",
+		"motorcycle_make_name": "Govecs"
+	},
+	{
+		"motorcycle_make_id": "66",
+		"motorcycle_make_name": "Harley-Davidson"
+	},
+	{
+		"motorcycle_make_id": "67",
+		"motorcycle_make_name": "Hercules"
+	},
+	{
+		"motorcycle_make_id": "68",
+		"motorcycle_make_name": "Herkules"
+	},
+	{
+		"motorcycle_make_id": "69",
+		"motorcycle_make_name": "Honda"
+	},
+	{
+		"motorcycle_make_id": "70",
+		"motorcycle_make_name": "Horex"
+	},
+	{
+		"motorcycle_make_id": "71",
+		"motorcycle_make_name": "Horwin"
+	},
+	{
+		"motorcycle_make_id": "72",
+		"motorcycle_make_name": "Husaberg"
+	},
+	{
+		"motorcycle_make_id": "73",
+		"motorcycle_make_name": "Husqvarna"
+	},
+	{
+		"motorcycle_make_id": "74",
+		"motorcycle_make_name": "Hyosung"
+	},
+	{
+		"motorcycle_make_id": "75",
+		"motorcycle_make_name": "Indian"
+	},
+	{
+		"motorcycle_make_id": "76",
+		"motorcycle_make_name": "Italjet"
+	},
+	{
+		"motorcycle_make_id": "77",
+		"motorcycle_make_name": "Jawa"
+	},
+	{
+		"motorcycle_make_id": "78",
+		"motorcycle_make_name": "Jinling"
+	},
+	{
+		"motorcycle_make_id": "82",
+		"motorcycle_make_name": "KL Mobility / Piper"
+	},
+	{
+		"motorcycle_make_id": "85",
+		"motorcycle_make_name": "KSR"
+	},
+	{
+		"motorcycle_make_id": "86",
+		"motorcycle_make_name": "KTM"
+	},
+	{
+		"motorcycle_make_id": "79",
+		"motorcycle_make_name": "Kawasaki"
+	},
+	{
+		"motorcycle_make_id": "80",
+		"motorcycle_make_name": "Keeway"
+	},
+	{
+		"motorcycle_make_id": "81",
+		"motorcycle_make_name": "Kimi"
+	},
+	{
+		"motorcycle_make_id": "83",
+		"motorcycle_make_name": "Knievel"
+	},
+	{
+		"motorcycle_make_id": "84",
+		"motorcycle_make_name": "Kreidler"
+	},
+	{
+		"motorcycle_make_id": "87",
+		"motorcycle_make_name": "Kumpan"
+	},
+	{
+		"motorcycle_make_id": "88",
+		"motorcycle_make_name": "Kymco"
+	},
+	{
+		"motorcycle_make_id": "93",
+		"motorcycle_make_name": "LML"
+	},
+	{
+		"motorcycle_make_id": "89",
+		"motorcycle_make_name": "Lambretta"
+	},
+	{
+		"motorcycle_make_id": "90",
+		"motorcycle_make_name": "Laverda"
+	},
+	{
+		"motorcycle_make_id": "91",
+		"motorcycle_make_name": "Lifan"
+	},
+	{
+		"motorcycle_make_id": "92",
+		"motorcycle_make_name": "Linhai"
+	},
+	{
+		"motorcycle_make_id": "94",
+		"motorcycle_make_name": "Luxxon"
+	},
+	{
+		"motorcycle_make_id": "98",
+		"motorcycle_make_name": "MBK"
+	},
+	{
+		"motorcycle_make_id": "104",
+		"motorcycle_make_name": "MV Agusta"
+	},
+	{
+		"motorcycle_make_id": "95",
+		"motorcycle_make_name": "Maico"
+	},
+	{
+		"motorcycle_make_id": "96",
+		"motorcycle_make_name": "Malaguti"
+	},
+	{
+		"motorcycle_make_id": "97",
+		"motorcycle_make_name": "Mash"
+	},
+	{
+		"motorcycle_make_id": "99",
+		"motorcycle_make_name": "Megelli"
+	},
+	{
+		"motorcycle_make_id": "101",
+		"motorcycle_make_name": "Moto Guzzi"
+	},
+	{
+		"motorcycle_make_id": "102",
+		"motorcycle_make_name": "Moto Morini"
+	},
+	{
+		"motorcycle_make_id": "100",
+		"motorcycle_make_name": "Motobi"
+	},
+	{
+		"motorcycle_make_id": "103",
+		"motorcycle_make_name": "Motowell"
+	},
+	{
+		"motorcycle_make_id": "105",
+		"motorcycle_make_name": "Mz"
+	},
+	{
+		"motorcycle_make_id": "106",
+		"motorcycle_make_name": "NIU"
+	},
+	{
+		"motorcycle_make_id": "108",
+		"motorcycle_make_name": "NSU"
+	},
+	{
+		"motorcycle_make_id": "107",
+		"motorcycle_make_name": "Norton"
+	},
+	{
+		"motorcycle_make_id": "109",
+		"motorcycle_make_name": "Online"
+	},
+	{
+		"motorcycle_make_id": "112",
+		"motorcycle_make_name": "PGO"
+	},
+	{
+		"motorcycle_make_id": "110",
+		"motorcycle_make_name": "Pegasus"
+	},
+	{
+		"motorcycle_make_id": "111",
+		"motorcycle_make_name": "Peugeot"
+	},
+	{
+		"motorcycle_make_id": "113",
+		"motorcycle_make_name": "Piaggio"
+	},
+	{
+		"motorcycle_make_id": "114",
+		"motorcycle_make_name": "Piper"
+	},
+	{
+		"motorcycle_make_id": "115",
+		"motorcycle_make_name": "Polaris"
+	},
+	{
+		"motorcycle_make_id": "116",
+		"motorcycle_make_name": "Puch"
+	},
+	{
+		"motorcycle_make_id": "117",
+		"motorcycle_make_name": "Quadix"
+	},
+	{
+		"motorcycle_make_id": "118",
+		"motorcycle_make_name": "Quadro"
+	},
+	{
+		"motorcycle_make_id": "119",
+		"motorcycle_make_name": "Rewaco"
+	},
+	{
+		"motorcycle_make_id": "120",
+		"motorcycle_make_name": "Rieju"
+	},
+	{
+		"motorcycle_make_id": "121",
+		"motorcycle_make_name": "Rivero"
+	},
+	{
+		"motorcycle_make_id": "122",
+		"motorcycle_make_name": "Royal Enfield"
+	},
+	{
+		"motorcycle_make_id": "134",
+		"motorcycle_make_name": "SMC"
+	},
+	{
+		"motorcycle_make_id": "140",
+		"motorcycle_make_name": "SWM"
+	},
+	{
+		"motorcycle_make_id": "141",
+		"motorcycle_make_name": "SYM"
+	},
+	{
+		"motorcycle_make_id": "123",
+		"motorcycle_make_name": "Sachs"
+	},
+	{
+		"motorcycle_make_id": "124",
+		"motorcycle_make_name": "Scrooser"
+	},
+	{
+		"motorcycle_make_id": "125",
+		"motorcycle_make_name": "Seat"
+	},
+	{
+		"motorcycle_make_id": "126",
+		"motorcycle_make_name": "Segway"
+	},
+	{
+		"motorcycle_make_id": "127",
+		"motorcycle_make_name": "Seikel"
+	},
+	{
+		"motorcycle_make_id": "128",
+		"motorcycle_make_name": "Sherco"
+	},
+	{
+		"motorcycle_make_id": "129",
+		"motorcycle_make_name": "Shineray"
+	},
+	{
+		"motorcycle_make_id": "130",
+		"motorcycle_make_name": "Si.o"
+	},
+	{
+		"motorcycle_make_id": "131",
+		"motorcycle_make_name": "Silence"
+	},
+	{
+		"motorcycle_make_id": "132",
+		"motorcycle_make_name": "Simson"
+	},
+	{
+		"motorcycle_make_id": "133",
+		"motorcycle_make_name": "Skyteam"
+	},
+	{
+		"motorcycle_make_id": "135",
+		"motorcycle_make_name": "Steereon"
+	},
+	{
+		"motorcycle_make_id": "136",
+		"motorcycle_make_name": "Stels"
+	},
+	{
+		"motorcycle_make_id": "137",
+		"motorcycle_make_name": "Super Soco"
+	},
+	{
+		"motorcycle_make_id": "138",
+		"motorcycle_make_name": "Sur-Ron"
+	},
+	{
+		"motorcycle_make_id": "139",
+		"motorcycle_make_name": "Suzuki"
+	},
+	{
+		"motorcycle_make_id": "143",
+		"motorcycle_make_name": "TGB"
+	},
+	{
+		"motorcycle_make_id": "145",
+		"motorcycle_make_name": "TM"
+	},
+	{
+		"motorcycle_make_id": "148",
+		"motorcycle_make_name": "TRS"
+	},
+	{
+		"motorcycle_make_id": "142",
+		"motorcycle_make_name": "Tauris"
+	},
+	{
+		"motorcycle_make_id": "144",
+		"motorcycle_make_name": "Thunderbike"
+	},
+	{
+		"motorcycle_make_id": "146",
+		"motorcycle_make_name": "Triton"
+	},
+	{
+		"motorcycle_make_id": "147",
+		"motorcycle_make_name": "Triumph"
+	},
+	{
+		"motorcycle_make_id": "149",
+		"motorcycle_make_name": "Ural"
+	},
+	{
+		"motorcycle_make_id": "151",
+		"motorcycle_make_name": "VICTORY"
+	},
+	{
+		"motorcycle_make_id": "152",
+		"motorcycle_make_name": "VOGE"
+	},
+	{
+		"motorcycle_make_id": "150",
+		"motorcycle_make_name": "Vespa"
+	},
+	{
+		"motorcycle_make_id": "153",
+		"motorcycle_make_name": "Voxan"
+	},
+	{
+		"motorcycle_make_id": "154",
+		"motorcycle_make_name": "WMI"
+	},
+	{
+		"motorcycle_make_id": "155",
+		"motorcycle_make_name": "Yamaha"
+	},
+	{
+		"motorcycle_make_id": "156",
+		"motorcycle_make_name": "Zero"
+	},
+	{
+		"motorcycle_make_id": "157",
+		"motorcycle_make_name": "Zhongyu"
+	},
+	{
+		"motorcycle_make_id": "158",
+		"motorcycle_make_name": "Zontes"
+	},
+	{
+		"motorcycle_make_id": "159",
+		"motorcycle_make_name": "Zündapp"
+	},
+	{
+		"motorcycle_make_id": "46",
+		"motorcycle_make_name": "e-max"
+	},
+	{
+		"motorcycle_make_id": "47",
+		"motorcycle_make_name": "emco"
+	}
+]

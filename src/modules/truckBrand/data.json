@@ -1,0 +1,142 @@
+[
+	{
+		"truck_make_id": "1",
+		"truck_make_name": "DAF"
+	},
+	{
+		"truck_make_id": "2",
+		"truck_make_name": "Demag"
+	},
+	{
+		"truck_make_id": "6",
+		"truck_make_name": "FUSO"
+	},
+	{
+		"truck_make_id": "3",
+		"truck_make_name": "Faun"
+	},
+	{
+		"truck_make_id": "4",
+		"truck_make_name": "Ford"
+	},
+	{
+		"truck_make_id": "5",
+		"truck_make_name": "Freightliner"
+	},
+	{
+		"truck_make_id": "7",
+		"truck_make_name": "Ginaf"
+	},
+	{
+		"truck_make_id": "8",
+		"truck_make_name": "Grove"
+	},
+	{
+		"truck_make_id": "10",
+		"truck_make_name": "HN Schörling"
+	},
+	{
+		"truck_make_id": "9",
+		"truck_make_name": "Hako"
+	},
+	{
+		"truck_make_id": "11",
+		"truck_make_name": "Iveco"
+	},
+	{
+		"truck_make_id": "12",
+		"truck_make_name": "Kamaz"
+	},
+	{
+		"truck_make_id": "13",
+		"truck_make_name": "Liebherr"
+	},
+	{
+		"truck_make_id": "16",
+		"truck_make_name": "MAN"
+	},
+	{
+		"truck_make_id": "14",
+		"truck_make_name": "Mack"
+	},
+	{
+		"truck_make_id": "15",
+		"truck_make_name": "Magirus Deutz"
+	},
+	{
+		"truck_make_id": "17",
+		"truck_make_name": "Meiller"
+	},
+	{
+		"truck_make_id": "18",
+		"truck_make_name": "Mercedes-Benz"
+	},
+	{
+		"truck_make_id": "19",
+		"truck_make_name": "Mitsubishi"
+	},
+	{
+		"truck_make_id": "20",
+		"truck_make_name": "Nissan"
+	},
+	{
+		"truck_make_id": "21",
+		"truck_make_name": "Opel"
+	},
+	{
+		"truck_make_id": "22",
+		"truck_make_name": "Palfinger"
+	},
+	{
+		"truck_make_id": "23",
+		"truck_make_name": "Peugeot"
+	},
+	{
+		"truck_make_id": "24",
+		"truck_make_name": "Renault"
+	},
+	{
+		"truck_make_id": "25",
+		"truck_make_name": "Ruthmann"
+	},
+	{
+		"truck_make_id": "26",
+		"truck_make_name": "Scania"
+	},
+	{
+		"truck_make_id": "27",
+		"truck_make_name": "Schmidt"
+	},
+	{
+		"truck_make_id": "28",
+		"truck_make_name": "Skoda"
+	},
+	{
+		"truck_make_id": "29",
+		"truck_make_name": "Steyr"
+	},
+	{
+		"truck_make_id": "30",
+		"truck_make_name": "Tatra"
+	},
+	{
+		"truck_make_id": "31",
+		"truck_make_name": "Toyota"
+	},
+	{
+		"truck_make_id": "32",
+		"truck_make_name": "Unimog"
+	},
+	{
+		"truck_make_id": "33",
+		"truck_make_name": "Volkswagen"
+	},
+	{
+		"truck_make_id": "34",
+		"truck_make_name": "Volvo"
+	},
+	{
+		"truck_make_id": "35",
+		"truck_make_name": "Yanmar"
+	}
+]

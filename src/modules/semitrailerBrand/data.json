@@ -1,0 +1,418 @@
+[
+	{
+		"semi_trailer_make_id": "3",
+		"semi_trailer_make_name": "ATM"
+	},
+	{
+		"semi_trailer_make_id": "1",
+		"semi_trailer_make_name": "Ackermann"
+	},
+	{
+		"semi_trailer_make_id": "2",
+		"semi_trailer_make_name": "Annaburger"
+	},
+	{
+		"semi_trailer_make_id": "4",
+		"semi_trailer_make_name": "Auwärter"
+	},
+	{
+		"semi_trailer_make_id": "8",
+		"semi_trailer_make_name": "BNG"
+	},
+	{
+		"semi_trailer_make_id": "5",
+		"semi_trailer_make_name": "Benalu"
+	},
+	{
+		"semi_trailer_make_id": "6",
+		"semi_trailer_make_name": "Berger"
+	},
+	{
+		"semi_trailer_make_id": "7",
+		"semi_trailer_make_name": "Blomenröhr"
+	},
+	{
+		"semi_trailer_make_id": "10",
+		"semi_trailer_make_name": "Brenderup"
+	},
+	{
+		"semi_trailer_make_id": "11",
+		"semi_trailer_make_name": "Broshuis"
+	},
+	{
+		"semi_trailer_make_id": "13",
+		"semi_trailer_make_name": "Bunge"
+	},
+	{
+		"semi_trailer_make_id": "9",
+		"semi_trailer_make_name": "Böckmann"
+	},
+	{
+		"semi_trailer_make_id": "12",
+		"semi_trailer_make_name": "Bücker Trailer"
+	},
+	{
+		"semi_trailer_make_id": "14",
+		"semi_trailer_make_name": "Carnehl"
+	},
+	{
+		"semi_trailer_make_id": "15",
+		"semi_trailer_make_name": "Chereau"
+	},
+	{
+		"semi_trailer_make_id": "18",
+		"semi_trailer_make_name": "D-TEC"
+	},
+	{
+		"semi_trailer_make_id": "16",
+		"semi_trailer_make_name": "Dinkel"
+	},
+	{
+		"semi_trailer_make_id": "17",
+		"semi_trailer_make_name": "Doll"
+	},
+	{
+		"semi_trailer_make_id": "19",
+		"semi_trailer_make_name": "ES-GE"
+	},
+	{
+		"semi_trailer_make_id": "20",
+		"semi_trailer_make_name": "Faymonville"
+	},
+	{
+		"semi_trailer_make_id": "21",
+		"semi_trailer_make_name": "Feber"
+	},
+	{
+		"semi_trailer_make_id": "22",
+		"semi_trailer_make_name": "Feldbinder"
+	},
+	{
+		"semi_trailer_make_id": "23",
+		"semi_trailer_make_name": "Fliegl"
+	},
+	{
+		"semi_trailer_make_id": "24",
+		"semi_trailer_make_name": "Floor"
+	},
+	{
+		"semi_trailer_make_id": "25",
+		"semi_trailer_make_name": "Frühauf"
+	},
+	{
+		"semi_trailer_make_id": "26",
+		"semi_trailer_make_name": "General Trailer"
+	},
+	{
+		"semi_trailer_make_id": "27",
+		"semi_trailer_make_name": "Goldhofer"
+	},
+	{
+		"semi_trailer_make_id": "28",
+		"semi_trailer_make_name": "Groenewegen"
+	},
+	{
+		"semi_trailer_make_id": "29",
+		"semi_trailer_make_name": "Gsodam"
+	},
+	{
+		"semi_trailer_make_id": "33",
+		"semi_trailer_make_name": "HRD"
+	},
+	{
+		"semi_trailer_make_id": "30",
+		"semi_trailer_make_name": "Heinemann"
+	},
+	{
+		"semi_trailer_make_id": "31",
+		"semi_trailer_make_name": "Hendricks"
+	},
+	{
+		"semi_trailer_make_id": "32",
+		"semi_trailer_make_name": "Hoffmann"
+	},
+	{
+		"semi_trailer_make_id": "35",
+		"semi_trailer_make_name": "Humbaur"
+	},
+	{
+		"semi_trailer_make_id": "36",
+		"semi_trailer_make_name": "Huttner"
+	},
+	{
+		"semi_trailer_make_id": "34",
+		"semi_trailer_make_name": "Hüffermann"
+	},
+	{
+		"semi_trailer_make_id": "37",
+		"semi_trailer_make_name": "Kaiser"
+	},
+	{
+		"semi_trailer_make_id": "39",
+		"semi_trailer_make_name": "Kel-Berg"
+	},
+	{
+		"semi_trailer_make_id": "40",
+		"semi_trailer_make_name": "Kempf"
+	},
+	{
+		"semi_trailer_make_id": "41",
+		"semi_trailer_make_name": "Knapen"
+	},
+	{
+		"semi_trailer_make_id": "43",
+		"semi_trailer_make_name": "Kotschenreuther"
+	},
+	{
+		"semi_trailer_make_id": "44",
+		"semi_trailer_make_name": "Kraker"
+	},
+	{
+		"semi_trailer_make_id": "45",
+		"semi_trailer_make_name": "Kramer"
+	},
+	{
+		"semi_trailer_make_id": "46",
+		"semi_trailer_make_name": "Kroeger"
+	},
+	{
+		"semi_trailer_make_id": "47",
+		"semi_trailer_make_name": "Krone"
+	},
+	{
+		"semi_trailer_make_id": "48",
+		"semi_trailer_make_name": "Krukenmeier"
+	},
+	{
+		"semi_trailer_make_id": "38",
+		"semi_trailer_make_name": "Kässbohrer"
+	},
+	{
+		"semi_trailer_make_id": "42",
+		"semi_trailer_make_name": "Kögel"
+	},
+	{
+		"semi_trailer_make_id": "49",
+		"semi_trailer_make_name": "Lag"
+	},
+	{
+		"semi_trailer_make_id": "50",
+		"semi_trailer_make_name": "Lamberet"
+	},
+	{
+		"semi_trailer_make_id": "51",
+		"semi_trailer_make_name": "Langendorf"
+	},
+	{
+		"semi_trailer_make_id": "54",
+		"semi_trailer_make_name": "LeciTrailer"
+	},
+	{
+		"semi_trailer_make_id": "52",
+		"semi_trailer_make_name": "Lecinena"
+	},
+	{
+		"semi_trailer_make_id": "55",
+		"semi_trailer_make_name": "Legras"
+	},
+	{
+		"semi_trailer_make_id": "56",
+		"semi_trailer_make_name": "Lider Trailer"
+	},
+	{
+		"semi_trailer_make_id": "57",
+		"semi_trailer_make_name": "LinTrailers"
+	},
+	{
+		"semi_trailer_make_id": "58",
+		"semi_trailer_make_name": "Lück"
+	},
+	{
+		"semi_trailer_make_id": "60",
+		"semi_trailer_make_name": "MAX"
+	},
+	{
+		"semi_trailer_make_id": "61",
+		"semi_trailer_make_name": "MEGA"
+	},
+	{
+		"semi_trailer_make_id": "59",
+		"semi_trailer_make_name": "Magyar"
+	},
+	{
+		"semi_trailer_make_id": "62",
+		"semi_trailer_make_name": "Meierling"
+	},
+	{
+		"semi_trailer_make_id": "63",
+		"semi_trailer_make_name": "Meiller"
+	},
+	{
+		"semi_trailer_make_id": "64",
+		"semi_trailer_make_name": "Menci"
+	},
+	{
+		"semi_trailer_make_id": "65",
+		"semi_trailer_make_name": "Menke-Janzen"
+	},
+	{
+		"semi_trailer_make_id": "66",
+		"semi_trailer_make_name": "Merceron"
+	},
+	{
+		"semi_trailer_make_id": "67",
+		"semi_trailer_make_name": "Merker"
+	},
+	{
+		"semi_trailer_make_id": "68",
+		"semi_trailer_make_name": "Meusburger"
+	},
+	{
+		"semi_trailer_make_id": "69",
+		"semi_trailer_make_name": "Montenegro"
+	},
+	{
+		"semi_trailer_make_id": "70",
+		"semi_trailer_make_name": "Möslein"
+	},
+	{
+		"semi_trailer_make_id": "71",
+		"semi_trailer_make_name": "Müller-Mitteltal"
+	},
+	{
+		"semi_trailer_make_id": "72",
+		"semi_trailer_make_name": "NFP-Eurotrailer"
+	},
+	{
+		"semi_trailer_make_id": "73",
+		"semi_trailer_make_name": "Nooteboom"
+	},
+	{
+		"semi_trailer_make_id": "74",
+		"semi_trailer_make_name": "Orten"
+	},
+	{
+		"semi_trailer_make_id": "75",
+		"semi_trailer_make_name": "Orthaus"
+	},
+	{
+		"semi_trailer_make_id": "78",
+		"semi_trailer_make_name": "PAVIC"
+	},
+	{
+		"semi_trailer_make_id": "76",
+		"semi_trailer_make_name": "Pacton"
+	},
+	{
+		"semi_trailer_make_id": "77",
+		"semi_trailer_make_name": "Panav"
+	},
+	{
+		"semi_trailer_make_id": "79",
+		"semi_trailer_make_name": "Pezzaioli"
+	},
+	{
+		"semi_trailer_make_id": "82",
+		"semi_trailer_make_name": "ROHR"
+	},
+	{
+		"semi_trailer_make_id": "80",
+		"semi_trailer_make_name": "Reisch"
+	},
+	{
+		"semi_trailer_make_id": "81",
+		"semi_trailer_make_name": "Renders"
+	},
+	{
+		"semi_trailer_make_id": "89",
+		"semi_trailer_make_name": "SEKA"
+	},
+	{
+		"semi_trailer_make_id": "83",
+		"semi_trailer_make_name": "Samro"
+	},
+	{
+		"semi_trailer_make_id": "84",
+		"semi_trailer_make_name": "Scheuerle"
+	},
+	{
+		"semi_trailer_make_id": "85",
+		"semi_trailer_make_name": "Schmidt"
+	},
+	{
+		"semi_trailer_make_id": "86",
+		"semi_trailer_make_name": "Schmitz Cargobull"
+	},
+	{
+		"semi_trailer_make_id": "87",
+		"semi_trailer_make_name": "Schrader"
+	},
+	{
+		"semi_trailer_make_id": "88",
+		"semi_trailer_make_name": "Schwarzmüller"
+	},
+	{
+		"semi_trailer_make_id": "90",
+		"semi_trailer_make_name": "Sommer"
+	},
+	{
+		"semi_trailer_make_id": "91",
+		"semi_trailer_make_name": "Spier"
+	},
+	{
+		"semi_trailer_make_id": "92",
+		"semi_trailer_make_name": "Spitzer"
+	},
+	{
+		"semi_trailer_make_id": "93",
+		"semi_trailer_make_name": "Stas"
+	},
+	{
+		"semi_trailer_make_id": "94",
+		"semi_trailer_make_name": "Stokota"
+	},
+	{
+		"semi_trailer_make_id": "95",
+		"semi_trailer_make_name": "Talson"
+	},
+	{
+		"semi_trailer_make_id": "96",
+		"semi_trailer_make_name": "Trailor"
+	},
+	{
+		"semi_trailer_make_id": "97",
+		"semi_trailer_make_name": "Van Eck"
+	},
+	{
+		"semi_trailer_make_id": "98",
+		"semi_trailer_make_name": "Vanhool"
+	},
+	{
+		"semi_trailer_make_id": "99",
+		"semi_trailer_make_name": "Volkswagen"
+	},
+	{
+		"semi_trailer_make_id": "100",
+		"semi_trailer_make_name": "Wackenhut"
+	},
+	{
+		"semi_trailer_make_id": "101",
+		"semi_trailer_make_name": "Wagner"
+	},
+	{
+		"semi_trailer_make_id": "102",
+		"semi_trailer_make_name": "Web-Trailer"
+	},
+	{
+		"semi_trailer_make_id": "103",
+		"semi_trailer_make_name": "Wecon"
+	},
+	{
+		"semi_trailer_make_id": "104",
+		"semi_trailer_make_name": "Wielton"
+	},
+	{
+		"semi_trailer_make_id": "105",
+		"semi_trailer_make_name": "ZASŁAW"
+	}
+]

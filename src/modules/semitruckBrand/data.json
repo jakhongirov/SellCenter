@@ -1,0 +1,62 @@
+[
+	{
+		"semi_trailer_truck_make_id": "2",
+		"semi_trailer_truck_make_name": "DAF"
+	},
+	{
+		"semi_trailer_truck_make_id": "1",
+		"semi_trailer_truck_make_name": "Daewoo"
+	},
+	{
+		"semi_trailer_truck_make_id": "3",
+		"semi_trailer_truck_make_name": "Ford"
+	},
+	{
+		"semi_trailer_truck_make_id": "4",
+		"semi_trailer_truck_make_name": "Freightliner"
+	},
+	{
+		"semi_trailer_truck_make_id": "5",
+		"semi_trailer_truck_make_name": "Iveco"
+	},
+	{
+		"semi_trailer_truck_make_id": "6",
+		"semi_trailer_truck_make_name": "Kenworth"
+	},
+	{
+		"semi_trailer_truck_make_id": "9",
+		"semi_trailer_truck_make_name": "MAN"
+	},
+	{
+		"semi_trailer_truck_make_id": "7",
+		"semi_trailer_truck_make_name": "Mack"
+	},
+	{
+		"semi_trailer_truck_make_id": "8",
+		"semi_trailer_truck_make_name": "Magirus Deutz"
+	},
+	{
+		"semi_trailer_truck_make_id": "10",
+		"semi_trailer_truck_make_name": "Mercedes-Benz"
+	},
+	{
+		"semi_trailer_truck_make_id": "11",
+		"semi_trailer_truck_make_name": "Peterbilt"
+	},
+	{
+		"semi_trailer_truck_make_id": "12",
+		"semi_trailer_truck_make_name": "Renault"
+	},
+	{
+		"semi_trailer_truck_make_id": "13",
+		"semi_trailer_truck_make_name": "Scania"
+	},
+	{
+		"semi_trailer_truck_make_id": "14",
+		"semi_trailer_truck_make_name": "Unimog"
+	},
+	{
+		"semi_trailer_truck_make_id": "15",
+		"semi_trailer_truck_make_name": "Volvo"
+	}
+]

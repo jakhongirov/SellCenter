@@ -10,7 +10,7 @@ const credentials = {
   port: 5432,
   user: 'postgres',
   password: 'Sellcenter2024',
-  database: 'postgres'
+  database: 'sellcenter'
 };
 
 const pool = new Pool(credentials);

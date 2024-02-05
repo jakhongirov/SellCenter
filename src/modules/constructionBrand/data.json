@@ -1,0 +1,402 @@
+[
+	{
+		"construction_make_id": "1",
+		"construction_make_name": "ABG"
+	},
+	{
+		"construction_make_id": "6",
+		"construction_make_name": "AUSA"
+	},
+	{
+		"construction_make_id": "2",
+		"construction_make_name": "Ahlmann"
+	},
+	{
+		"construction_make_id": "3",
+		"construction_make_name": "Ammann"
+	},
+	{
+		"construction_make_id": "4",
+		"construction_make_name": "Atlas"
+	},
+	{
+		"construction_make_id": "5",
+		"construction_make_name": "Atlas Copco"
+	},
+	{
+		"construction_make_id": "7",
+		"construction_make_name": "Avant Tecno"
+	},
+	{
+		"construction_make_id": "11",
+		"construction_make_name": "BOMAG"
+	},
+	{
+		"construction_make_id": "8",
+		"construction_make_name": "Bell"
+	},
+	{
+		"construction_make_id": "9",
+		"construction_make_name": "Bergmann"
+	},
+	{
+		"construction_make_id": "10",
+		"construction_make_name": "Bobcat"
+	},
+	{
+		"construction_make_id": "13",
+		"construction_make_name": "CAT"
+	},
+	{
+		"construction_make_id": "12",
+		"construction_make_name": "Case"
+	},
+	{
+		"construction_make_id": "14",
+		"construction_make_name": "Daewoo"
+	},
+	{
+		"construction_make_id": "15",
+		"construction_make_name": "Demag"
+	},
+	{
+		"construction_make_id": "16",
+		"construction_make_name": "Dieci"
+	},
+	{
+		"construction_make_id": "17",
+		"construction_make_name": "Ditch Witch"
+	},
+	{
+		"construction_make_id": "18",
+		"construction_make_name": "Doosan"
+	},
+	{
+		"construction_make_id": "19",
+		"construction_make_name": "Dresser"
+	},
+	{
+		"construction_make_id": "20",
+		"construction_make_name": "Dynapac"
+	},
+	{
+		"construction_make_id": "21",
+		"construction_make_name": "Eurocomach"
+	},
+	{
+		"construction_make_id": "22",
+		"construction_make_name": "Faun"
+	},
+	{
+		"construction_make_id": "23",
+		"construction_make_name": "Fermec"
+	},
+	{
+		"construction_make_id": "24",
+		"construction_make_name": "Fiat"
+	},
+	{
+		"construction_make_id": "25",
+		"construction_make_name": "Fuchs"
+	},
+	{
+		"construction_make_id": "26",
+		"construction_make_name": "Furukawa"
+	},
+	{
+		"construction_make_id": "27",
+		"construction_make_name": "Gehl"
+	},
+	{
+		"construction_make_id": "28",
+		"construction_make_name": "Gehlmax"
+	},
+	{
+		"construction_make_id": "29",
+		"construction_make_name": "Genie"
+	},
+	{
+		"construction_make_id": "30",
+		"construction_make_name": "Grove"
+	},
+	{
+		"construction_make_id": "31",
+		"construction_make_name": "Hako"
+	},
+	{
+		"construction_make_id": "32",
+		"construction_make_name": "Halla"
+	},
+	{
+		"construction_make_id": "33",
+		"construction_make_name": "Hamm"
+	},
+	{
+		"construction_make_id": "34",
+		"construction_make_name": "Hanix"
+	},
+	{
+		"construction_make_id": "35",
+		"construction_make_name": "Hanomag"
+	},
+	{
+		"construction_make_id": "36",
+		"construction_make_name": "Haulotte"
+	},
+	{
+		"construction_make_id": "37",
+		"construction_make_name": "Hinowa"
+	},
+	{
+		"construction_make_id": "38",
+		"construction_make_name": "Hitachi"
+	},
+	{
+		"construction_make_id": "39",
+		"construction_make_name": "Hydrema"
+	},
+	{
+		"construction_make_id": "40",
+		"construction_make_name": "Hyundai"
+	},
+	{
+		"construction_make_id": "41",
+		"construction_make_name": "IHC"
+	},
+	{
+		"construction_make_id": "42",
+		"construction_make_name": "IHI"
+	},
+	{
+		"construction_make_id": "43",
+		"construction_make_name": "JCB"
+	},
+	{
+		"construction_make_id": "44",
+		"construction_make_name": "JLG"
+	},
+	{
+		"construction_make_id": "45",
+		"construction_make_name": "Kaercher"
+	},
+	{
+		"construction_make_id": "46",
+		"construction_make_name": "Kaeser"
+	},
+	{
+		"construction_make_id": "48",
+		"construction_make_name": "Kobelco"
+	},
+	{
+		"construction_make_id": "49",
+		"construction_make_name": "Komatsu"
+	},
+	{
+		"construction_make_id": "50",
+		"construction_make_name": "Kramer"
+	},
+	{
+		"construction_make_id": "51",
+		"construction_make_name": "Krupp"
+	},
+	{
+		"construction_make_id": "52",
+		"construction_make_name": "Kubota"
+	},
+	{
+		"construction_make_id": "47",
+		"construction_make_name": "Kälble"
+	},
+	{
+		"construction_make_id": "53",
+		"construction_make_name": "Liebherr"
+	},
+	{
+		"construction_make_id": "54",
+		"construction_make_name": "Liugong"
+	},
+	{
+		"construction_make_id": "56",
+		"construction_make_name": "MECALAC"
+	},
+	{
+		"construction_make_id": "57",
+		"construction_make_name": "MF"
+	},
+	{
+		"construction_make_id": "55",
+		"construction_make_name": "Manitou"
+	},
+	{
+		"construction_make_id": "58",
+		"construction_make_name": "Michigan"
+	},
+	{
+		"construction_make_id": "59",
+		"construction_make_name": "Mitsubishi"
+	},
+	{
+		"construction_make_id": "60",
+		"construction_make_name": "Morooka"
+	},
+	{
+		"construction_make_id": "61",
+		"construction_make_name": "Moxy"
+	},
+	{
+		"construction_make_id": "62",
+		"construction_make_name": "Multicar"
+	},
+	{
+		"construction_make_id": "66",
+		"construction_make_name": "NPK"
+	},
+	{
+		"construction_make_id": "63",
+		"construction_make_name": "Neuson"
+	},
+	{
+		"construction_make_id": "64",
+		"construction_make_name": "New Holland"
+	},
+	{
+		"construction_make_id": "65",
+		"construction_make_name": "Niftylift"
+	},
+	{
+		"construction_make_id": "67",
+		"construction_make_name": "O & K"
+	},
+	{
+		"construction_make_id": "68",
+		"construction_make_name": "Orthaus"
+	},
+	{
+		"construction_make_id": "69",
+		"construction_make_name": "Palfinger"
+	},
+	{
+		"construction_make_id": "70",
+		"construction_make_name": "Paus"
+	},
+	{
+		"construction_make_id": "71",
+		"construction_make_name": "Pel-Job"
+	},
+	{
+		"construction_make_id": "72",
+		"construction_make_name": "Potain"
+	},
+	{
+		"construction_make_id": "73",
+		"construction_make_name": "Putzmeister"
+	},
+	{
+		"construction_make_id": "74",
+		"construction_make_name": "Rammax"
+	},
+	{
+		"construction_make_id": "75",
+		"construction_make_name": "Renault"
+	},
+	{
+		"construction_make_id": "76",
+		"construction_make_name": "Sany"
+	},
+	{
+		"construction_make_id": "77",
+		"construction_make_name": "Scania"
+	},
+	{
+		"construction_make_id": "78",
+		"construction_make_name": "Schaeff"
+	},
+	{
+		"construction_make_id": "79",
+		"construction_make_name": "Schäffer"
+	},
+	{
+		"construction_make_id": "80",
+		"construction_make_name": "Sennebogen"
+	},
+	{
+		"construction_make_id": "81",
+		"construction_make_name": "Shatal"
+	},
+	{
+		"construction_make_id": "82",
+		"construction_make_name": "Sunward"
+	},
+	{
+		"construction_make_id": "83",
+		"construction_make_name": "Takeuchi"
+	},
+	{
+		"construction_make_id": "84",
+		"construction_make_name": "Terberg"
+	},
+	{
+		"construction_make_id": "85",
+		"construction_make_name": "Terex"
+	},
+	{
+		"construction_make_id": "86",
+		"construction_make_name": "Thwaites"
+	},
+	{
+		"construction_make_id": "87",
+		"construction_make_name": "Unimog"
+	},
+	{
+		"construction_make_id": "88",
+		"construction_make_name": "Upright"
+	},
+	{
+		"construction_make_id": "89",
+		"construction_make_name": "Vermeer"
+	},
+	{
+		"construction_make_id": "91",
+		"construction_make_name": "Volvo"
+	},
+	{
+		"construction_make_id": "90",
+		"construction_make_name": "Vögele"
+	},
+	{
+		"construction_make_id": "92",
+		"construction_make_name": "Wacker"
+	},
+	{
+		"construction_make_id": "93",
+		"construction_make_name": "Weber"
+	},
+	{
+		"construction_make_id": "94",
+		"construction_make_name": "Weidemann"
+	},
+	{
+		"construction_make_id": "95",
+		"construction_make_name": "Wirtgen"
+	},
+	{
+		"construction_make_id": "96",
+		"construction_make_name": "Xrok"
+	},
+	{
+		"construction_make_id": "97",
+		"construction_make_name": "Yamaguchi"
+	},
+	{
+		"construction_make_id": "98",
+		"construction_make_name": "Yanmar"
+	},
+	{
+		"construction_make_id": "99",
+		"construction_make_name": "Zeppelin"
+	},
+	{
+		"construction_make_id": "100",
+		"construction_make_name": "Zettelmeyer"
+	}
+]

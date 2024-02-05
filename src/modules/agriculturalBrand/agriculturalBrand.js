@@ -1,6 +1,31 @@
 const model = require('./model')
+const FS = require('../../lib/fs/fs');
+const path = require('path');
 
 module.exports = {
+   ADD_FILE: async (req, res) => {
+      try {
+         const data = new FS(path.resolve(__dirname, '.', `data.json`))
+         const file = JSON.parse(data.read())
+
+         for (const item of file) {
+            await model.addMark(item?.agricultural_vehicle_make_name)
+         }
+
+         return res.json({
+            status: 200,
+            message: "Success"
+         })
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
    GET_MARKS: async (_, res) => {
       try {
          const marksList = await model.marksList()

@@ -143,8 +143,8 @@ router
    .put('/news/update', FileUpload.single("photo"), news.PUT)
    .put('/news/update/status', news.PUT_STATUS)
    .delete('/news/delete', news.DELETE)
-   
-    // PRICE LIST
+
+   // PRICE LIST
    .get('/price/admin/list', priceList.GET_ADMIN)
    .get('/price/list', priceList.GET)
    .post('/pay', priceList.PAYMENT)
@@ -155,12 +155,14 @@ router
 
    // Car makrs 
    .get('/car/marks', carBrand.GET_MARKS)
+   .get('/car/mark/file/add', carBrand.ADD_MAKE_FILE)
    .post('/car/add/mark', carBrand.POST_MARK)
    .put('/car/update/mark', carBrand.PUT_MARK)
    .delete('/car/delete/mark', carBrand.DELETE_MARK)
 
    // Car model
    .get('/car/model', carBrand.GET_MODEL)
+   .get('/car/model/file/add', carBrand.ADD_MODEL_FILE)
    .post('/car/add/model', carBrand.POST_MODEL)
    .put('/car/update/model', carBrand.PUT_MODEL)
    .delete('/car/delete/model', carBrand.DELETE_MODEL)
@@ -179,6 +181,7 @@ router
 
    // Motorcycle marks
    .get('/motorcycle/marks', motorcycleBrand.GET_MARKS)
+   .get('/motorcycle/mark/file/add', motorcycleBrand.ADD_MAKE_FILE)
    .post('/motorcycle/add/mark', motorcycleBrand.POST_MARK)
    .put('/motorcycle/update/mark', motorcycleBrand.PUT_MARK)
    .delete('/motorcycle/delete/mark', motorcycleBrand.DELETE_MARK)
@@ -201,6 +204,7 @@ router
 
    // Motor home marks
    .get('/motorhome/marks', motorhomeBrand.GET_MARKS)
+   .get('/motorhome/mark/file/add', motorhomeBrand.ADD_MAKE_FILE)
    .post('/motorhome/add/mark', motorhomeBrand.POST_MARK)
    .put('/motorhome/update/mark', motorhomeBrand.PUT_MARK)
    .delete('/motorhome/delete/mark', motorhomeBrand.DELETE_MARK)
@@ -223,6 +227,7 @@ router
 
    // Truck makrs 
    .get('/truck/marks', truckBrand.GET_MARKS)
+   .get('/truck/mark/file/add', truckBrand.ADD_MAKE_FILE)
    .post('/truck/add/mark', truckBrand.POST_MARK)
    .put('/truck/update/mark', truckBrand.PUT_MARK)
    .delete('/truck/delete/mark', truckBrand.DELETE_MARK)
@@ -245,6 +250,7 @@ router
 
    // Trailer makrs 
    .get('/trailer/marks', trailerBrand.GET_MARKS)
+   .get('/trailer/mark/file/add', trailerBrand.ADD_MAKE_FILE)
    .post('/trailer/add/mark', trailerBrand.POST_MARK)
    .put('/trailer/update/mark', trailerBrand.PUT_MARK)
    .delete('/trailer/delete/mark', trailerBrand.DELETE_MARK)
@@ -267,6 +273,7 @@ router
 
    // Van makrs 
    .get('/van/marks', vanBrand.GET_MARKS)
+   .get('/van/mark/file/add', vanBrand.ADD_MAKE_FILE)
    .post('/van/add/mark', vanBrand.POST_MARK)
    .put('/van/update/mark', vanBrand.PUT_MARK)
    .delete('/van/delete/mark', vanBrand.DELETE_MARK)
@@ -289,6 +296,7 @@ router
 
    // Semi truck makrs 
    .get('/semitruck/marks', semitruckBrand.GET_MARKS)
+   .get('/semitruck/mark/file/add', semitruckBrand.ADD_MAKE_FILE)
    .post('/semitruck/add/mark', semitruckBrand.POST_MARK)
    .put('/semitruck/update/mark', semitruckBrand.PUT_MARK)
    .delete('/semitruck/delete/mark', semitruckBrand.DELETE_MARK)
@@ -311,6 +319,7 @@ router
 
    // Semi trailer makrs 
    .get('/semitrailer/marks', semitrailerBrand.GET_MARKS)
+   .get('/semitrailer/mark/file/add', semitrailerBrand.ADD_MAKE_FILE)
    .post('/semitrailer/add/mark', semitrailerBrand.POST_MARK)
    .put('/semitrailer/update/mark', semitrailerBrand.PUT_MARK)
    .delete('/semitrailer/delete/mark', semitrailerBrand.DELETE_MARK)
@@ -333,6 +342,7 @@ router
 
    // Coache makrs 
    .get('/coache/marks', coacheBrand.GET_MARKS)
+   .get('/coache/mark/file/add', coacheBrand.ADD_MAKE_FILE)
    .post('/coache/add/mark', coacheBrand.POST_MARK)
    .put('/coache/update/mark', coacheBrand.PUT_MARK)
    .delete('/coache/delete/mark', coacheBrand.DELETE_MARK)
@@ -355,6 +365,7 @@ router
 
    // Agricultural makrs 
    .get('/agricultural/marks', agriculturalBrand.GET_MARKS)
+   .get('/agricultural/mark/file/add', agriculturalBrand.ADD_FILE)
    .post('/agricultural/add/mark', agriculturalBrand.POST_MARK)
    .put('/agricultural/update/mark', agriculturalBrand.PUT_MARK)
    .delete('/agricultural/delete/mark', agriculturalBrand.DELETE_MARK)
@@ -377,6 +388,7 @@ router
 
    // Construction makrs 
    .get('/construction/marks', constructionBrand.GET_MARKS)
+   .get('/construction/mark/file/add', constructionBrand.ADD_MAKE_FILE)
    .post('/construction/add/mark', constructionBrand.POST_MARK)
    .put('/construction/update/mark', constructionBrand.PUT_MARK)
    .delete('/construction/delete/mark', constructionBrand.DELETE_MARK)
@@ -399,6 +411,7 @@ router
 
    // Forklift makrs 
    .get('/forklift/marks', forkliftBrand.GET_MARKS)
+   .get('/forklift/mark/file/add', forkliftBrand.ADD_MAKE_FILE)
    .post('/forklift/add/mark', forkliftBrand.POST_MARK)
    .put('/forklift/update/mark', forkliftBrand.PUT_MARK)
    .delete('/forklift/delete/mark', forkliftBrand.DELETE_MARK)

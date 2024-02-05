@@ -1,6 +1,53 @@
 const model = require('./model')
 
 module.exports = {
+
+   ADD_MAKE_FILE: async (req, res) => {
+      try {
+         const data = new FS(path.resolve(__dirname, '.', `carMake.json`))
+         const file = JSON.parse(data.read())
+
+         for (const item of file) {
+            await model.addMark(item?.car_make_name)
+         }
+
+         return res.json({
+            status: 200,
+            message: "Success"
+         })
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_MODEL_FILE: async (req, res) => {
+      try {
+         const data = new FS(path.resolve(__dirname, '.', `carModel.json`))
+         const file = JSON.parse(data.read())
+
+         for (const item of file) {
+            await model.addModel(item?.car_make_id, item?.car_model_name)
+         }
+
+         return res.json({
+            status: 200,
+            message: "Success"
+         })
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
    GET_MARKS: async (_, res) => {
       try {
          const marksList = await model.marksList()

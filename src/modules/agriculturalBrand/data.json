@@ -1,0 +1,354 @@
+[
+	{
+		"agricultural_vehicle_make_id": "1",
+		"agricultural_vehicle_make_name": "Accord"
+	},
+	{
+		"agricultural_vehicle_make_id": "2",
+		"agricultural_vehicle_make_name": "Agco / Massey Ferguson"
+	},
+	{
+		"agricultural_vehicle_make_id": "3",
+		"agricultural_vehicle_make_name": "Amazone"
+	},
+	{
+		"agricultural_vehicle_make_id": "4",
+		"agricultural_vehicle_make_name": "Avant Tecno"
+	},
+	{
+		"agricultural_vehicle_make_id": "5",
+		"agricultural_vehicle_make_name": "Becker"
+	},
+	{
+		"agricultural_vehicle_make_id": "6",
+		"agricultural_vehicle_make_name": "Belarus"
+	},
+	{
+		"agricultural_vehicle_make_id": "7",
+		"agricultural_vehicle_make_name": "Bergmann"
+	},
+	{
+		"agricultural_vehicle_make_id": "8",
+		"agricultural_vehicle_make_name": "Branson"
+	},
+	{
+		"agricultural_vehicle_make_id": "9",
+		"agricultural_vehicle_make_name": "Busatis"
+	},
+	{
+		"agricultural_vehicle_make_id": "10",
+		"agricultural_vehicle_make_name": "BvL - Van Lengerich"
+	},
+	{
+		"agricultural_vehicle_make_id": "11",
+		"agricultural_vehicle_make_name": "Carraro"
+	},
+	{
+		"agricultural_vehicle_make_id": "12",
+		"agricultural_vehicle_make_name": "Case"
+	},
+	{
+		"agricultural_vehicle_make_id": "13",
+		"agricultural_vehicle_make_name": "Claas"
+	},
+	{
+		"agricultural_vehicle_make_id": "14",
+		"agricultural_vehicle_make_name": "Deutz-Fahr"
+	},
+	{
+		"agricultural_vehicle_make_id": "15",
+		"agricultural_vehicle_make_name": "Doll"
+	},
+	{
+		"agricultural_vehicle_make_id": "16",
+		"agricultural_vehicle_make_name": "Dücker"
+	},
+	{
+		"agricultural_vehicle_make_id": "17",
+		"agricultural_vehicle_make_name": "Düvelsdorf"
+	},
+	{
+		"agricultural_vehicle_make_id": "18",
+		"agricultural_vehicle_make_name": "Eberhardt"
+	},
+	{
+		"agricultural_vehicle_make_id": "19",
+		"agricultural_vehicle_make_name": "Eicher"
+	},
+	{
+		"agricultural_vehicle_make_id": "20",
+		"agricultural_vehicle_make_name": "Fahr"
+	},
+	{
+		"agricultural_vehicle_make_id": "21",
+		"agricultural_vehicle_make_name": "Fella"
+	},
+	{
+		"agricultural_vehicle_make_id": "22",
+		"agricultural_vehicle_make_name": "Fendt"
+	},
+	{
+		"agricultural_vehicle_make_id": "23",
+		"agricultural_vehicle_make_name": "Fiat"
+	},
+	{
+		"agricultural_vehicle_make_id": "24",
+		"agricultural_vehicle_make_name": "Ford"
+	},
+	{
+		"agricultural_vehicle_make_id": "25",
+		"agricultural_vehicle_make_name": "Fortschritt"
+	},
+	{
+		"agricultural_vehicle_make_id": "26",
+		"agricultural_vehicle_make_name": "Foton"
+	},
+	{
+		"agricultural_vehicle_make_id": "27",
+		"agricultural_vehicle_make_name": "Frost"
+	},
+	{
+		"agricultural_vehicle_make_id": "28",
+		"agricultural_vehicle_make_name": "Gaspardo"
+	},
+	{
+		"agricultural_vehicle_make_id": "29",
+		"agricultural_vehicle_make_name": "GiANT"
+	},
+	{
+		"agricultural_vehicle_make_id": "30",
+		"agricultural_vehicle_make_name": "Goldoni"
+	},
+	{
+		"agricultural_vehicle_make_id": "31",
+		"agricultural_vehicle_make_name": "Grimme"
+	},
+	{
+		"agricultural_vehicle_make_id": "33",
+		"agricultural_vehicle_make_name": "Gutbrod"
+	},
+	{
+		"agricultural_vehicle_make_id": "32",
+		"agricultural_vehicle_make_name": "Güldner"
+	},
+	{
+		"agricultural_vehicle_make_id": "34",
+		"agricultural_vehicle_make_name": "Hako"
+	},
+	{
+		"agricultural_vehicle_make_id": "35",
+		"agricultural_vehicle_make_name": "Hanomag"
+	},
+	{
+		"agricultural_vehicle_make_id": "36",
+		"agricultural_vehicle_make_name": "Hassia"
+	},
+	{
+		"agricultural_vehicle_make_id": "37",
+		"agricultural_vehicle_make_name": "Hittner"
+	},
+	{
+		"agricultural_vehicle_make_id": "38",
+		"agricultural_vehicle_make_name": "Holder"
+	},
+	{
+		"agricultural_vehicle_make_id": "39",
+		"agricultural_vehicle_make_name": "Howard"
+	},
+	{
+		"agricultural_vehicle_make_id": "40",
+		"agricultural_vehicle_make_name": "Hymach"
+	},
+	{
+		"agricultural_vehicle_make_id": "41",
+		"agricultural_vehicle_make_name": "IHC"
+	},
+	{
+		"agricultural_vehicle_make_id": "42",
+		"agricultural_vehicle_make_name": "Iseki"
+	},
+	{
+		"agricultural_vehicle_make_id": "44",
+		"agricultural_vehicle_make_name": "JCB"
+	},
+	{
+		"agricultural_vehicle_make_id": "43",
+		"agricultural_vehicle_make_name": "Jacobsen"
+	},
+	{
+		"agricultural_vehicle_make_id": "45",
+		"agricultural_vehicle_make_name": "John Deere"
+	},
+	{
+		"agricultural_vehicle_make_id": "46",
+		"agricultural_vehicle_make_name": "Kioti"
+	},
+	{
+		"agricultural_vehicle_make_id": "47",
+		"agricultural_vehicle_make_name": "Kramer"
+	},
+	{
+		"agricultural_vehicle_make_id": "48",
+		"agricultural_vehicle_make_name": "Krone"
+	},
+	{
+		"agricultural_vehicle_make_id": "49",
+		"agricultural_vehicle_make_name": "Kubota"
+	},
+	{
+		"agricultural_vehicle_make_id": "50",
+		"agricultural_vehicle_make_name": "Lamborghini"
+	},
+	{
+		"agricultural_vehicle_make_id": "51",
+		"agricultural_vehicle_make_name": "Landini"
+	},
+	{
+		"agricultural_vehicle_make_id": "52",
+		"agricultural_vehicle_make_name": "Landsberg"
+	},
+	{
+		"agricultural_vehicle_make_id": "53",
+		"agricultural_vehicle_make_name": "Langendorf"
+	},
+	{
+		"agricultural_vehicle_make_id": "54",
+		"agricultural_vehicle_make_name": "Lanz"
+	},
+	{
+		"agricultural_vehicle_make_id": "55",
+		"agricultural_vehicle_make_name": "Lely"
+	},
+	{
+		"agricultural_vehicle_make_id": "56",
+		"agricultural_vehicle_make_name": "Lemken"
+	},
+	{
+		"agricultural_vehicle_make_id": "57",
+		"agricultural_vehicle_make_name": "MAN"
+	},
+	{
+		"agricultural_vehicle_make_id": "58",
+		"agricultural_vehicle_make_name": "Maschio"
+	},
+	{
+		"agricultural_vehicle_make_id": "59",
+		"agricultural_vehicle_make_name": "Massey Ferguson"
+	},
+	{
+		"agricultural_vehicle_make_id": "60",
+		"agricultural_vehicle_make_name": "McCormick"
+	},
+	{
+		"agricultural_vehicle_make_id": "61",
+		"agricultural_vehicle_make_name": "Mengele"
+	},
+	{
+		"agricultural_vehicle_make_id": "62",
+		"agricultural_vehicle_make_name": "Mercedes-Benz"
+	},
+	{
+		"agricultural_vehicle_make_id": "63",
+		"agricultural_vehicle_make_name": "Mitsubishi"
+	},
+	{
+		"agricultural_vehicle_make_id": "64",
+		"agricultural_vehicle_make_name": "Multicar"
+	},
+	{
+		"agricultural_vehicle_make_id": "65",
+		"agricultural_vehicle_make_name": "New Holland"
+	},
+	{
+		"agricultural_vehicle_make_id": "66",
+		"agricultural_vehicle_make_name": "Niemeyer"
+	},
+	{
+		"agricultural_vehicle_make_id": "69",
+		"agricultural_vehicle_make_name": "PZ-Vicon"
+	},
+	{
+		"agricultural_vehicle_make_id": "67",
+		"agricultural_vehicle_make_name": "Porsche"
+	},
+	{
+		"agricultural_vehicle_make_id": "68",
+		"agricultural_vehicle_make_name": "Pöttinger"
+	},
+	{
+		"agricultural_vehicle_make_id": "70",
+		"agricultural_vehicle_make_name": "Rabe"
+	},
+	{
+		"agricultural_vehicle_make_id": "71",
+		"agricultural_vehicle_make_name": "Rau"
+	},
+	{
+		"agricultural_vehicle_make_id": "72",
+		"agricultural_vehicle_make_name": "Rauch"
+	},
+	{
+		"agricultural_vehicle_make_id": "73",
+		"agricultural_vehicle_make_name": "Reformwerke Wels"
+	},
+	{
+		"agricultural_vehicle_make_id": "74",
+		"agricultural_vehicle_make_name": "Regent"
+	},
+	{
+		"agricultural_vehicle_make_id": "75",
+		"agricultural_vehicle_make_name": "Renault"
+	},
+	{
+		"agricultural_vehicle_make_id": "76",
+		"agricultural_vehicle_make_name": "Same"
+	},
+	{
+		"agricultural_vehicle_make_id": "78",
+		"agricultural_vehicle_make_name": "Schlüter"
+	},
+	{
+		"agricultural_vehicle_make_id": "79",
+		"agricultural_vehicle_make_name": "Schmidt"
+	},
+	{
+		"agricultural_vehicle_make_id": "77",
+		"agricultural_vehicle_make_name": "Schäffer"
+	},
+	{
+		"agricultural_vehicle_make_id": "80",
+		"agricultural_vehicle_make_name": "Shibaura"
+	},
+	{
+		"agricultural_vehicle_make_id": "81",
+		"agricultural_vehicle_make_name": "Steyr"
+	},
+	{
+		"agricultural_vehicle_make_id": "82",
+		"agricultural_vehicle_make_name": "Strautmann"
+	},
+	{
+		"agricultural_vehicle_make_id": "83",
+		"agricultural_vehicle_make_name": "TPS Labinprogres"
+	},
+	{
+		"agricultural_vehicle_make_id": "84",
+		"agricultural_vehicle_make_name": "Unimog"
+	},
+	{
+		"agricultural_vehicle_make_id": "85",
+		"agricultural_vehicle_make_name": "Valtra"
+	},
+	{
+		"agricultural_vehicle_make_id": "86",
+		"agricultural_vehicle_make_name": "Vogel&Noot"
+	},
+	{
+		"agricultural_vehicle_make_id": "87",
+		"agricultural_vehicle_make_name": "Weidemann"
+	},
+	{
+		"agricultural_vehicle_make_id": "88",
+		"agricultural_vehicle_make_name": "Zetor"
+	}
+]

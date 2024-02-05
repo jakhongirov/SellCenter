@@ -1,0 +1,190 @@
+[
+	{
+		"van_make_id": "1",
+		"van_make_name": "Algema"
+	},
+	{
+		"van_make_id": "2",
+		"van_make_name": "Barkas"
+	},
+	{
+		"van_make_id": "3",
+		"van_make_name": "Cenntro"
+	},
+	{
+		"van_make_id": "4",
+		"van_make_name": "Citroën"
+	},
+	{
+		"van_make_id": "6",
+		"van_make_name": "DAF"
+	},
+	{
+		"van_make_id": "7",
+		"van_make_name": "DFSK"
+	},
+	{
+		"van_make_id": "5",
+		"van_make_name": "Dacia"
+	},
+	{
+		"van_make_id": "10",
+		"van_make_name": "FUSO"
+	},
+	{
+		"van_make_id": "8",
+		"van_make_name": "Fiat"
+	},
+	{
+		"van_make_id": "9",
+		"van_make_name": "Ford"
+	},
+	{
+		"van_make_id": "11",
+		"van_make_name": "GAC Gonow"
+	},
+	{
+		"van_make_id": "12",
+		"van_make_name": "Goupil"
+	},
+	{
+		"van_make_id": "13",
+		"van_make_name": "Hako"
+	},
+	{
+		"van_make_id": "14",
+		"van_make_name": "Hanomag"
+	},
+	{
+		"van_make_id": "15",
+		"van_make_name": "Hyundai"
+	},
+	{
+		"van_make_id": "16",
+		"van_make_name": "Ifor Williams"
+	},
+	{
+		"van_make_id": "17",
+		"van_make_name": "Intrall"
+	},
+	{
+		"van_make_id": "18",
+		"van_make_name": "Isuzu"
+	},
+	{
+		"van_make_id": "19",
+		"van_make_name": "Iveco"
+	},
+	{
+		"van_make_id": "20",
+		"van_make_name": "Kia"
+	},
+	{
+		"van_make_id": "21",
+		"van_make_name": "Ladog"
+	},
+	{
+		"van_make_id": "23",
+		"van_make_name": "MAN"
+	},
+	{
+		"van_make_id": "22",
+		"van_make_name": "Magirus Deutz"
+	},
+	{
+		"van_make_id": "24",
+		"van_make_name": "Maxus"
+	},
+	{
+		"van_make_id": "25",
+		"van_make_name": "Mazda"
+	},
+	{
+		"van_make_id": "26",
+		"van_make_name": "Mercedes-Benz"
+	},
+	{
+		"van_make_id": "27",
+		"van_make_name": "Mitsubishi"
+	},
+	{
+		"van_make_id": "28",
+		"van_make_name": "Multicar"
+	},
+	{
+		"van_make_id": "29",
+		"van_make_name": "Nissan"
+	},
+	{
+		"van_make_id": "30",
+		"van_make_name": "Opel"
+	},
+	{
+		"van_make_id": "31",
+		"van_make_name": "Peugeot"
+	},
+	{
+		"van_make_id": "32",
+		"van_make_name": "Piaggio"
+	},
+	{
+		"van_make_id": "33",
+		"van_make_name": "Renault"
+	},
+	{
+		"van_make_id": "34",
+		"van_make_name": "Robur"
+	},
+	{
+		"van_make_id": "35",
+		"van_make_name": "Ruthmann"
+	},
+	{
+		"van_make_id": "36",
+		"van_make_name": "SAIC"
+	},
+	{
+		"van_make_id": "37",
+		"van_make_name": "Schmidt"
+	},
+	{
+		"van_make_id": "38",
+		"van_make_name": "Seat"
+	},
+	{
+		"van_make_id": "39",
+		"van_make_name": "Skoda"
+	},
+	{
+		"van_make_id": "40",
+		"van_make_name": "Steyr"
+	},
+	{
+		"van_make_id": "41",
+		"van_make_name": "StreetScooter"
+	},
+	{
+		"van_make_id": "42",
+		"van_make_name": "Suzuki"
+	},
+	{
+		"van_make_id": "43",
+		"van_make_name": "Toyota"
+	},
+	{
+		"van_make_id": "44",
+		"van_make_name": "Tropos"
+	},
+	{
+		"van_make_id": "45",
+		"van_make_name": "Unimog"
+	},
+	{
+		"van_make_id": "46",
+		"van_make_name": "Volkswagen"
+	},
+	{
+		"van_make_id": "47",
+		"van_make_name": "Volvo"
+	}
+]
