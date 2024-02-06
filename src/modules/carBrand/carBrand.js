@@ -10,7 +10,7 @@ module.exports = {
          const file = JSON.parse(data.read())
 
          for (const item of file) {
-            await model.addMark(item?.car_make_name)
+            await model.addMarkFile(item?.car_make_id, item?.car_make_name)
          }
 
          return res.json({

@@ -34,6 +34,18 @@ const ADD_MARK = `
    RETURNING *;
 `;
 
+const ADD_FILE_MARK = `
+   INSERT INTO
+      car_makes (,
+         car_make_id,
+         car_make_name
+      ) VALUES (
+         $1,
+         $2
+      )
+   RETURNING *;
+`;
+
 const ADD_MODEL = `
    INSERT INTO
       car_models (
@@ -111,6 +123,7 @@ const foundModel = (model_id) => fetch(FOUND_MODEL, model_id)
 const updateModel = (model_id, mark_id, model_name) => fetch(UPDATE_MODEL, model_id, mark_id, model_name)
 const deleteMark = (mark_id) => fetch(DELETE_MARK, mark_id)
 const deleteModel = (model_id) => fetch(DELETE_MODEL, model_id)
+const addMarkFile = (mark_id, mark_name) => fetch(ADD_FILE_MARK, mark_id, mark_name)
 
 module.exports = {
    marksList,
@@ -122,5 +135,6 @@ module.exports = {
    foundModel,
    updateModel,
    deleteMark,
-   deleteModel
+   deleteModel,
+   addMarkFile
 }
