@@ -1,4 +1,6 @@
 const model = require('./model')
+const FS = require('../../lib/fs/fs');
+const path = require('path');
 
 module.exports = {
    ADD_MAKE_FILE: async (req, res) => {
