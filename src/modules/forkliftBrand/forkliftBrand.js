@@ -9,7 +9,7 @@ module.exports = {
          const file = JSON.parse(data.read())
 
          for (const item of file) {
-            await model.addMark(item?.construction_make_name)
+            await model.addMark(item?.forklift_make_name)
          }
 
          return res.json({
