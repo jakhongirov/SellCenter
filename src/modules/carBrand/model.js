@@ -36,7 +36,7 @@ const ADD_MARK = `
 
 const ADD_FILE_MARK = `
    INSERT INTO
-      car_makes (,
+      car_makes (
          car_make_id,
          car_make_name
       ) VALUES (
