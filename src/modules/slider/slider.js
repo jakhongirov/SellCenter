@@ -82,6 +82,8 @@ module.exports = {
             slider_link
          } = req.body
 
+         console.log(uploadPhoto);
+
          const slider_img_name = uploadPhoto.filename
          const slider_img_url = `${process.env.BACKEND_URL}/${uploadPhoto.filename}`
 
