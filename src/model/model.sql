@@ -737,3 +737,13 @@ CREATE TABLE news (
    news_active boolean DEFAULT true,
    news_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE price_list (
+   price_item_id bigserial PRiMARY KEY,
+   price_item_title text,
+   price_item_desc text,
+   price_item_price NUMERIC(10, 2),
+   price_item_lang text,
+   price_item_active boolean DEFAULT true,
+   price_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);
