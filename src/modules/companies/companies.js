@@ -73,6 +73,42 @@ module.exports = {
       }
    },
 
+   GET_BY_USER: async (req, res) => {
+      try {
+         const { user_id } = req.params
+
+         if (user_id) {
+            const foundByUserId = await model.foundByUserId(user_id)
+
+            if (foundByUserId) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: foundByUserId
+               })
+            } else {
+               return res.json({
+                  status: 404,
+                  message: "Not found"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 400,
+               message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
    POST_COMPANY: async (req, res) => {
       try {
          const {

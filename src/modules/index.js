@@ -113,6 +113,7 @@ router
    // Companies
    .get('/companies/admin/list', companies.GET_ADMIN)
    .get('/company/:id', companies.GET_USER_COMPANY)
+   .get('/company/user/:id', companies.GET_BY_USER)
    .post('/company/add', companies.POST_COMPANY)
    .put('/company/edit', companies.PUT_COMPANY)
    .put('/company/edit/photo', FileUpload.single("photo"), companies.EDIT_PROFILE_IMAGE)

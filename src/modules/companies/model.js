@@ -71,6 +71,15 @@ const DELETE_COMPANY = `
    RETURNING *; 
 `;
 
+const FOUND_BY_USER = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const ADD_COMPANY = `
    INSERT INTO
       user_companies (
@@ -184,6 +193,7 @@ const editCompany = (
 )
 const editPhoto = (company_id, company_img_url, company_img_name) => fetch(EDIT_PHOTO, company_id, company_img_url, company_img_name)
 const deleteCompany = (company_id) => fetch(DELETE_COMPANY, company_id)
+const foundByUserId = (user_id) => fetch(FOUND_BY_USER, user_id)
 
 module.exports = {
    companiesListAdmin,
@@ -193,5 +203,6 @@ module.exports = {
    editPhoto,
    foundUser,
    foundCompany,
-   deleteCompany
+   deleteCompany,
+   foundByUserId
 }
