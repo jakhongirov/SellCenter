@@ -214,10 +214,6 @@ const FOUND_CAR_BY_ID = `
       users b
    ON
       a.user_id = b.user_id
-   INNER JOIN
-      user_companies c
-   ON
-      a.user_id = c.user_id
    WHERE
       car_id = $1
 `;
