@@ -295,8 +295,8 @@ const foundCarsList = (
    limit
 ) => {
    const bodyConditions = bodyArr?.map(body => `car_body = '${body}'`).join(' OR ') || '';
-   const typeConditions = typeArr?.map(type => `car_type = '${type}'`).join(' OR ') || '';
-//   const cityConditions = car_city.length > 0 ? car_city?.map(city => `car_city_zipcode = '${city}'`).join(' OR ') : '';
+   const Conditions = car_condition?.map(type => `car_condition = '${type}'`).join(' OR ') || '';
+   //   const cityConditions = car_city.length > 0 ? car_city?.map(city => `car_city_zipcode = '${city}'`).join(' OR ') : '';
    const fuelConditions = fuelArr?.map(car_fuel_type => `car_fuel_type = '${car_fuel_type}'`).join(' OR ') || '';
    const transmissionConditions = transmissionArr?.map(transmission => `car_transmission = '${transmission}'`).join(' OR ') || '';
    const colorConditions = colorArr?.map(color => `car_exterior_colour = '${color}'`).join(' OR ') || '';
@@ -321,8 +321,8 @@ const foundCarsList = (
          ${car_number_seats ? `and car_number_seats = ${car_number_seats}` : ""}
          ${car_number_door ? `and car_number_door = ${car_number_door}` : ""}
          ${car_silding_door ? `and car_silding_door = '${car_silding_door}'` : ""}
-         ${car_condition ? `and car_condition = '${car_condition}'` : ""}
-         ${typeConditions ? `and (${typeConditions})` : ""}
+         ${Conditions ? `and (${Conditions})` : ""}
+         ${typeArr ? `and  car_type = '${typeArr}'` : ""}
          ${car_payment_type ? `and car_payment_type = '${car_payment_type}'` : ""}
          ${car_price_from ? `and car_price >= ${car_price_from}` : ""}
          ${car_price_up_to ? `and car_price <= ${car_price_up_to}` : ""}
@@ -440,14 +440,14 @@ const foundCarsCount = (
    days
 ) => {
    const bodyConditions = bodyArr?.map(body => `car_body = '${body}'`).join(' OR ') || '';
-   const typeConditions = typeArr?.map(type => `car_type = '${type}'`).join(' OR ') || '';
-//   const cityConditions = car_city.length > 0 ? car_city?.map(city => `car_city_zipcode = '${city}'`).join(' OR ') : '';
+   const Conditions = car_condition?.map(type => `car_condition = '${type}'`).join(' OR ') || '';
+   //   const cityConditions = car_city.length > 0 ? car_city?.map(city => `car_city_zipcode = '${city}'`).join(' OR ') : '';
    const fuelConditions = fuelArr?.map(car_fuel_type => `car_fuel_type = '${car_fuel_type}'`).join(' OR ') || '';
    const transmissionConditions = transmissionArr?.map(transmission => `car_transmission = '${transmission}'`).join(' OR ') || '';
    const colorConditions = colorArr?.map(color => `car_exterior_colour = '${color}'`).join(' OR ') || '';
    const parkingConditions = parkingArr?.map(parking => `car_parking_sensors = '${parking}'`).join(' OR ') || '';
    const interiorColourConditions = interiorColourgArr?.map(e => `car_interior_colour = '${e}'`).join(' OR ') || '';
-   const interiorMaterialConditions = interiorMaterialgArr?.map(e => `car_interior_material = '${e}'`).join(' OR ') || ''; 
+   const interiorMaterialConditions = interiorMaterialgArr?.map(e => `car_interior_material = '${e}'`).join(' OR ') || '';
    const extrasString = extras?.map(extra => `'${extra}'`).join(', ');
    const othersString = others?.map(other => `'${other}'`).join(', ');
 
@@ -466,8 +466,8 @@ const foundCarsCount = (
       ${car_number_seats ? `and car_number_seats = ${car_number_seats}` : ""}
       ${car_number_door ? `and car_number_door = ${car_number_door}` : ""}
       ${car_silding_door ? `and car_silding_door = '${car_silding_door}'` : ""}
-      ${car_condition ? `and car_condition = '${car_condition}'` : ""}
-      ${typeConditions ? `and (${typeConditions})` : ''}
+      ${Conditions ? `and (${Conditions})` : ""}
+      ${typeArr ? `and car_type = '${typeArr}'` : ''}
       ${car_payment_type ? `and car_payment_type = '${car_payment_type}'` : ""}
       ${car_price_from ? `and car_price >= ${car_price_from}` : ""}
       ${car_price_up_to ? `and car_price <= ${car_price_up_to}` : ""}
