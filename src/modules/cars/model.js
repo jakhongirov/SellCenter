@@ -295,7 +295,7 @@ const foundCarsList = (
    limit
 ) => {
    const bodyConditions = bodyArr?.map(body => `car_body = '${body}'`).join(' OR ') || '';
-   const Conditions = car_condition?.map(type => `car_condition = '${type}'`).join(' OR ') || '';
+   const Conditions = car_condition?.length > 0 ? car_condition?.map(type => `car_condition = '${type}'`).join(' OR ') : '';
    //   const cityConditions = car_city.length > 0 ? car_city?.map(city => `car_city_zipcode = '${city}'`).join(' OR ') : '';
    const fuelConditions = fuelArr?.map(car_fuel_type => `car_fuel_type = '${car_fuel_type}'`).join(' OR ') || '';
    const transmissionConditions = transmissionArr?.map(transmission => `car_transmission = '${transmission}'`).join(' OR ') || '';
@@ -440,7 +440,7 @@ const foundCarsCount = (
    days
 ) => {
    const bodyConditions = bodyArr?.map(body => `car_body = '${body}'`).join(' OR ') || '';
-   const Conditions = car_condition?.map(type => `car_condition = '${type}'`).join(' OR ') || '';
+   const Conditions = car_condition?.length > 0 ? car_condition?.map(type => `car_condition = '${type}'`).join(' OR ') : '';
    //   const cityConditions = car_city.length > 0 ? car_city?.map(city => `car_city_zipcode = '${city}'`).join(' OR ') : '';
    const fuelConditions = fuelArr?.map(car_fuel_type => `car_fuel_type = '${car_fuel_type}'`).join(' OR ') || '';
    const transmissionConditions = transmissionArr?.map(transmission => `car_transmission = '${transmission}'`).join(' OR ') || '';
