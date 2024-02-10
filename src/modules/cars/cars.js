@@ -52,7 +52,7 @@ module.exports = {
             car_number_seats,
             car_number_door,
             car_silding_door,
-            car_condition,
+            car_type,
             type,
             car_payment_type,
             car_price_from,
@@ -123,7 +123,7 @@ module.exports = {
             car_number_seats,
             car_number_door,
             car_silding_door,
-            car_condition,
+            car_type,
             type,
             car_payment_type,
             car_price_from,
@@ -210,7 +210,7 @@ module.exports = {
             car_number_seats,
             car_number_door,
             car_silding_door,
-            car_condition,
+            car_type,
             type,
             car_payment_type,
             car_price_from,
@@ -271,7 +271,6 @@ module.exports = {
          // const parkingArr = parking_sensors ? parking_sensors?.split(',') : false
          // const interiorColourgArr = interior_colour ? interior_colour?.split(',') : false
          // const interiorMaterialgArr = interior_material ? interior_material?.split(',') : false
-         console.log(city)
 
          const foundCarsCount = await model.foundCarsCount(
             car_make,
@@ -282,7 +281,7 @@ module.exports = {
             car_number_seats,
             car_number_door,
             car_silding_door,
-            car_condition,
+            car_type,
             type,
             car_payment_type,
             car_price_from,
