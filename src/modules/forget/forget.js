@@ -91,11 +91,11 @@ module.exports = {
 
    CHANGE_PASSWORD: async (req, res) => {
       try {
-         const { email, new_passsword } = req.body
+         const { email, new_password } = req.body
          const foundUser = await model.foundUser(email)
 
          if (foundUser) {
-            const pass_hash = await bcryptjs.hash(new_passsword, 10)
+            const pass_hash = await bcryptjs.hash(new_password, 10)
             const updateUser = await model.updateUserPassword(email, pass_hash)
 
             if (updateUser) {
