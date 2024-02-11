@@ -46,6 +46,14 @@ CREATE TABLE user_companies (
    company_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE codes (
+   id bigserial PRiMARY KEY,
+   code text not null,
+   user_mail text,
+   code_active boolean DEFAULT true,
+   code_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE car_makes(
    car_make_id bigserial PRiMARY KEY,
    car_make_name text not null
@@ -293,7 +301,6 @@ CREATE TABLE trucks (
    truck_active boolean DEFAULT false,
    truck_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
-
 
 CREATE TABLE trailer_makes(
    trailer_make_id bigserial PRiMARY KEY,

@@ -11,6 +11,7 @@ const admin = require('./admin/admin')
 // Users files
 const users = require('./users/users')
 const userAds = require('./userAd/userAd')
+const forget = require('./forget/forget')
 
 // Companies file
 const companies = require('./companies/companies')
@@ -109,6 +110,10 @@ router
    .get('/user/agriculturals/:id', userAds.GET_VEHICLES)
    .get('/user/constructions/:id', userAds.GET_CONSTRUCTIONS)
    .get('/user/forklifts/:id', userAds.GET_FORKLIFTS)
+
+   // Forget
+   .post('/forget/email', forget.EMIAL)
+   .post('/forget/code', forget.CHECK_CODE)
 
    // Companies
    .get('/companies/admin/list', companies.GET_ADMIN)
