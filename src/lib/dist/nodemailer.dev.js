@@ -11,7 +11,7 @@ function nodeMailer(email, code) {
       switch (_context.prev = _context.next) {
         case 0:
           transporter = nodemailer.createTransport({
-            port: 535,
+            port: 587,
             service: 'gmail',
             auth: {
               user: process.env.E_USERNAME,
