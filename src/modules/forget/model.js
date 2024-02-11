@@ -27,7 +27,7 @@ const UPDATE_ACTIVE = `
       code_active = false
    WHERE
       id = $1
-   RETUNING *;
+   RETURNING *;
 `;
 
 const FOUND_CODE = `
