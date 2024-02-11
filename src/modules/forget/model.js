@@ -36,8 +36,8 @@ const FOUND_CODE = `
    FROM
       codes
    WHERE
-      user_mail = $1,
-      code = $2;
+      user_mail = $1
+      and code = $2;
 `;
 
 const UPDATE_PASSWORD = `
