@@ -1,4 +1,4 @@
-const { } = require('../../lib/postgres')
+const { fetch, fetchALL} = require('../../lib/postgres')
 
 const FOUND_USER = `
    SELECT
