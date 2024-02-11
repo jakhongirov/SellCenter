@@ -114,6 +114,7 @@ router
    // Forget
    .post('/forget/email', forget.EMIAL)
    .post('/forget/code', forget.CHECK_CODE)
+   .post('/forget/reset/password', forget.CHANGE_PASSWORD)
 
    // Companies
    .get('/companies/admin/list', companies.GET_ADMIN)

@@ -40,14 +40,26 @@ const FOUND_CODE = `
       code = $2;
 `;
 
+const UPDATE_PASSWORD = `
+   UPDATE
+      users
+   SET
+      user_password = $2
+   WHERE
+      user_email = $1
+   RETURNING *;
+`;
+
 const foundUser = (email) => fetch(FOUND_USER, email)
 const addCode = (code, email) => fetch(ADD_CODE, code, email)
 const updeteActive = (id) => fetch(UPDATE_ACTIVE, id)
 const foundCode = (email, code) => fetch(FOUND_CODE, email, code)
+const updateUserPassword = (email, pass_hash) => fetch(UPDATE_PASSWORD, email, pass_hash)
 
 module.exports = {
    foundUser,
    addCode,
    updeteActive,
-   foundCode
+   foundCode,
+   updateUserPassword
 }

@@ -1,4 +1,5 @@
 const model = require('./model')
+const bcryptjs = require('bcryptjs')
 const nodeMailer = require('../../lib/nodemailer')
 
 module.exports = {
@@ -76,6 +77,44 @@ module.exports = {
             return res.json({
                status: 401,
                message: "Code is incorrect"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   CHANGE_PASSWORD: async (req, res) => {
+      try {
+         const { email, new_passsword } = req.body
+         const foundUser = await model.foundUser(email)
+
+         if (foundUser) {
+            const pass_hash = await bcryptjs.hash(new_passsword, 10)
+            const updateUser = await model.updateUserPassword(email, pass_hash)
+
+            if (updateUser) {
+               return res.json({
+                  status: 200,
+                  message: 'Success',
+                  data: updateUser
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+         }
+         else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 
