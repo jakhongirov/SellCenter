@@ -6,12 +6,14 @@ const ADD_PRICE_ITEM = `
          price_item_title,
          price_item_desc,
          price_item_price,
-         price_item_lang
+         price_item_lang,
+         image_count
       ) VALUES (
          $1,
          $2,
          $3,
-         $4
+         $4,
+         $5
       ) RETURNING *;
 `;
 
@@ -22,7 +24,8 @@ const UPDATE_PRICE_ITEM = `
       price_item_title = $2,
       price_item_desc = $3,
       price_item_price = $4,
-      price_item_lang = $5
+      price_item_lang = $5,
+      image_count = $6
    WHERE
       price_item_id = $1
    RETURNING *;
@@ -77,8 +80,8 @@ const priceList = (limit, offset, lang) => {
 
    return fetchALL(PRICE_LIST)
 }
-const addPriceItem = (title, desc, price, lang) => fetch(ADD_PRICE_ITEM, title, desc, price, lang)
-const updatePriceItem = (id, title, desc, price, lang) => fetch(UPDATE_PRICE_ITEM, id, title, desc, price, lang)
+const addPriceItem = (title, desc, price, lang, image_count) => fetch(ADD_PRICE_ITEM, title, desc, price, lang, image_count)
+const updatePriceItem = (id, title, desc, price, lang, image_count) => fetch(UPDATE_PRICE_ITEM, id, title, desc, price, lang, image_count)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
 const deletePrice = (id) => fetch(DELETE_PRICE_ITEM, id)
 

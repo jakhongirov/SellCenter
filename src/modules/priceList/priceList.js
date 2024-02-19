@@ -127,9 +127,9 @@ module.exports = {
 
    ADD_PRICE: async (req, res) => {
       try {
-         const { title, desc, price, lang } = req.body
+         const { title, desc, price, lang, image_count } = req.body
 
-         const addPriceItem = await model.addPriceItem(title, desc, price, lang)
+         const addPriceItem = await model.addPriceItem(title, desc, price, lang, image_count)
 
          if (addPriceItem) {
             return res.json({
@@ -156,9 +156,9 @@ module.exports = {
 
    UPDATE_PRICE: async (req, res) => {
       try {
-         const { id, title, desc, price, lang } = req.body
+         const { id, title, desc, price, lang, image_count } = req.body
 
-         const updatePriceItem = await model.updatePriceItem(id, title, desc, price, lang)
+         const updatePriceItem = await model.updatePriceItem(id, title, desc, price, lang, image_count)
 
          if (updatePriceItem) {
             return res.json({

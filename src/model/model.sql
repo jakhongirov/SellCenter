@@ -751,6 +751,7 @@ CREATE TABLE price_list (
    price_item_desc text,
    price_item_price NUMERIC(10, 2),
    price_item_lang text,
+   image_count int DEFAULT 0,
    price_item_active boolean DEFAULT true,
    price_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
