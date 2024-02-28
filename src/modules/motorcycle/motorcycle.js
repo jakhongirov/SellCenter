@@ -549,8 +549,8 @@ module.exports = {
 
    DELETE_MOTORCYCLE: async (req, res) => {
       try {
-         const { motorcycle_id } = req.body
-         const foundMotorCycle = await model.foundMotorCycle(motorcycle_id)
+         const { id } = req.body
+         const foundMotorCycle = await model.foundMotorCycle(id)
 
          if (foundMotorCycle) {
             foundMotorCycle?.motorcycle_images_name.forEach((e) => {
@@ -567,7 +567,7 @@ module.exports = {
                ).delete();
             });
 
-            const deleteMotorcycle = await model.deleteMotorcycle(motorcycle_id)
+            const deleteMotorcycle = await model.deleteMotorcycle(id)
 
             if (deleteMotorcycle) {
                return res.json({
