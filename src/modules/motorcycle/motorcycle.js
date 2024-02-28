@@ -512,11 +512,11 @@ module.exports = {
 
    UPDATE_STATUS: async (req, res) => {
       try {
-         const { id, status } = req.body
-         const foundMotorcycleById = await model.foundMotorcycleById(id)
+         const { motorcycle_id, status } = req.body
+         const foundMotorcycleById = await model.foundMotorcycleById(motorcycle_id)
 
          if (foundMotorcycleById) {
-            const updateStatus = await model.updateStatus(id, status)
+            const updateStatus = await model.updateStatus(motorcycle_id, status)
 
             if (updateStatus) {
                return res.json({
