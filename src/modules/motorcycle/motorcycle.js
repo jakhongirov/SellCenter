@@ -381,7 +381,6 @@ module.exports = {
 
    PUT_MOTORCYCLE: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             motorcycle_id,
             motorcycle_make,
@@ -417,40 +416,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundMotorCycle = await model.foundMotorCycle(motorcycle_id)
-         const motorcycle_img_name = [];
-         const motorcycle_img = [];
-
-         if (uploadPhoto.length) {
-            foundMotorCycle?.motorcycle_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               motorcycle_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               motorcycle_img_name.push(e.filename);
-            });
-         } else {
-            foundMotorCycle?.motorcycle_images_name.forEach((e) => {
-               motorcycle_img.push(e);
-            });
-            foundMotorCycle?.motorcycle_images_name.forEach((e) => {
-               motorcycle_img_name.push(e);
-            });
-         }
-
          const updateMotorcycle = await model.updateMotorcycle(
             motorcycle_id,
             motorcycle_make,
@@ -483,9 +448,7 @@ module.exports = {
             motorcycle_dealer_rating,
             user_id,
             user_phone,
-            user_email,
-            motorcycle_img,
-            motorcycle_img_name
+            user_email
          )
 
          if (updateMotorcycle) {
@@ -498,6 +461,108 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { motorcycle_id } = req.body
+         const foundMotorCycle = await model.foundMotorCycle(motorcycle_id)
+         const motorcycle_img_name = [];
+         const motorcycle_img = [];
+
+         if (foundMotorCycle) {
+            uploadPhoto?.forEach((e) => {
+               motorcycle_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               motorcycle_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(motorcycle_id, motorcycle_img, motorcycle_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { motorcycle_id, delete_image_url, delete_image_name } = req.body
+         const foundMotorCycle = await model.foundMotorCycle(motorcycle_id)
+
+         if (foundMotorCycle) {
+            const motorcycle_images_url = foundMotorCycle?.motorcycle_images_url.filter(e => !delete_image_url?.includes(e))
+            const motorcycle_images_name = foundMotorCycle?.motorcycle_images_name.filter(e => !delete_image_name?.includes(e))
+
+            delete_image_name.forEach((e) => {
+               new FS(
+                  path.resolve(
+                     __dirname,
+                     '..',
+                     '..',
+                     '..',
+                     'public',
+                     'images',
+                     `${e}`,
+                  ),
+               ).delete();
+            });
+
+            const deleteImage = await model.deleteImage(motorcycle_id, motorcycle_images_url, motorcycle_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 

@@ -180,11 +180,31 @@ const UPDATE_TRUCK = `
       truck_discount_offers = $38,
       truck_vendor = $39,
       truck_dealer_rating  = $40,
-      truck_images_url = $41,
-      truck_images_name = $42,
-      user_id = $43,
-      user_phone = $44,
-      user_email = $45
+      user_id = $41,
+      user_phone = $42,
+      user_email = $43
+   WHERE
+      truck_id = $1
+   RETURNING *;
+`;
+
+const ADD_PHOTO = `
+   UPDATE
+      trucks
+   SET
+      truck_images_url = array_cat(truck_images_url, $2),
+      truck_images_name = array_cat(truck_images_name, $3)
+   WHERE
+      truck_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      trucks
+   SET
+      truck_images_url = $2,
+      truck_images_name = $3
    WHERE
       truck_id = $1
    RETURNING *;
@@ -257,7 +277,7 @@ const truckList = (
    limit,
    offset
 ) => {
-//   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `truck_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `truck_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -372,7 +392,7 @@ const truckCount = (
    picture,
    video
 ) => {
-//   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `truck_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `truck_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -569,8 +589,6 @@ const updateTruck = (
    truck_discount_offers,
    truck_vendor,
    truck_dealer_rating,
-   truck_img,
-   truck_img_name,
    user_id,
    user_phone,
    user_email
@@ -616,12 +634,12 @@ const updateTruck = (
    truck_discount_offers,
    truck_vendor,
    truck_dealer_rating,
-   truck_img,
-   truck_img_name,
    user_id,
    user_phone,
    user_email
 )
+const addImage = (id, truck_img, truck_img_name) => fetch(ADD_PHOTO, id, truck_img, truck_img_name)
+const deleteImage = (id, truck_images_url, truck_images_name) => fetch(DELETE_PHOTO, id, truck_images_url, truck_images_name)
 
 module.exports = {
    truckListAdmin,
@@ -632,5 +650,7 @@ module.exports = {
    truckCount,
    addTruck,
    updateTruck,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

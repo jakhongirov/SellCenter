@@ -189,11 +189,31 @@ const UPDATE_MOTOR_HOME = `
       motor_home_discount_offers = $41,
       motor_home_vendor = $42,
       motor_home_dealer_rating = $43,
-      motor_home_images_url = $44,
-      motor_home_images_name = $45,
-      user_id = $46,
-      user_phone = $47,
-      user_email = $48
+      user_id = $44,
+      user_phone = $45,
+      user_email = $46
+   WHERE
+      motor_home_id = $1
+   RETURNING *;
+`;
+
+const ADD_PHOTO = `
+   UPDATE
+      motor_homes
+   SET
+      motor_home_images_url = array_cat(motor_home_images_url, $2),
+      motor_home_images_name = array_cat(motor_home_images_name, $3)
+   WHERE
+      motor_home_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      motor_homes
+   SET
+      motor_home_images_url = $2,
+      motor_home_images_name = $3
    WHERE
       motor_home_id = $1
    RETURNING *;
@@ -271,7 +291,7 @@ const foundMotorhomeList = (
    limit
 ) => {
    const typesConditions = typesId?.map(e => `motor_home_type = '${e}'`).join(' OR ');
-//   const cityConditions = motor_home_city?.map(city => `motor_home_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = motor_home_city?.map(city => `motor_home_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `motor_home_fuel_type = '${e}'`).join(' OR ');
    const transmissionArrConditions = transmissionArr?.map(e => `motor_home_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -395,7 +415,7 @@ const foundMotorhomeCount = (
    video
 ) => {
    const typesConditions = typesId?.map(e => `motor_home_type = '${e}'`).join(' OR ');
-//   const cityConditions = motor_home_city?.map(city => `motor_home_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = motor_home_city?.map(city => `motor_home_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `motor_home_fuel_type = '${e}'`).join(' OR ');
    const transmissionArrConditions = transmissionArr?.map(e => `motor_home_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -604,8 +624,6 @@ const updateMotorhome = (
    motor_home_discount_offers,
    motor_home_vendor,
    motor_home_dealer_rating,
-   motorhome_img,
-   motorhome_img_name,
    user_id,
    user_phone,
    user_email
@@ -654,12 +672,12 @@ const updateMotorhome = (
    motor_home_discount_offers,
    motor_home_vendor,
    motor_home_dealer_rating,
-   motorhome_img,
-   motorhome_img_name,
    user_id,
    user_phone,
    user_email
 )
+const addImage = (id, motorhome_img, motorhome_img_name) => fetch(ADD_PHOTO, id, motorhome_img, motorhome_img_name)
+const deleteImage = (id, motor_home_images_url, motor_home_images_name) => fetch(DELETE_PHOTO, id, motor_home_images_url, motor_home_images_name)
 
 module.exports = {
    motorhomeListAdmin,
@@ -670,5 +688,7 @@ module.exports = {
    foundMotorhomeList,
    foundMotorhomeCount,
    addMotorhome,
-   updateMotorhome
+   updateMotorhome,
+   addImage,
+   deleteImage
 }

@@ -132,9 +132,7 @@ const UPDATE_MOTORCYCLE = `
       motorcycle_dealer_rating = $29,
       user_id = $30,
       user_phone = $31,
-      user_email = $32,
-      motorcycle_images_url = $33,
-      motorcycle_images_name = $34
+      user_email = $32
    WHERE
       motorcycle_id = $1
    RETURNING *;
@@ -153,6 +151,28 @@ const UPDATE_STATUS = `
       motorcycles
    SET
       motorcycle_active = $2
+   WHERE
+      motorcycle_id = $1
+   RETURNING *;
+`;
+
+const ADD_PHOTO = `
+   UPDATE
+      motorcycles
+   SET
+      motorcycle_images_url = array_cat(motorcycle_images_url, $2),
+      motorcycle_images_name = array_cat(motorcycle_images_name, $3)
+   WHERE
+      motorcycle_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      motorcycles
+   SET
+      motorcycle_images_url = $2,
+      motorcycle_images_name = $3
    WHERE
       motorcycle_id = $1
    RETURNING *;
@@ -210,8 +230,8 @@ const motorcycleList = (
    offset,
    limit
 ) => {
-    const typesConditions = types?.map(e => `motorcycle_type = '${e}'`).join(' OR ');
-//   const cityConditions = motorcycle_city?.map(city => `motorcycle_city_zipcode = '${city}'`).join(' OR ');
+   const typesConditions = types?.map(e => `motorcycle_type = '${e}'`).join(' OR ');
+   //   const cityConditions = motorcycle_city?.map(city => `motorcycle_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `motorcycle_fuel_type = '${e}'`).join(' OR ');
    const modeArrConditions = modeArr?.map(e => `motorcycle_driving_mode = '${e}'`).join(' OR ');
    const colorArrConditions = colorArr?.map(e => `motorcycle_exterior_colour = '${e}'`).join(' OR ');
@@ -304,8 +324,8 @@ const motorcycleCount = (
    motorcycle_number_owners,
    motorcycle_approved_used_programme
 ) => {
-  const typesConditions = types?.map(e => `motorcycle_type = '${e}'`).join(' OR ');
-//   const cityConditions = motorcycle_city?.map(city => `motorcycle_city_zipcode = '${city}'`).join(' OR ');
+   const typesConditions = types?.map(e => `motorcycle_type = '${e}'`).join(' OR ');
+   //   const cityConditions = motorcycle_city?.map(city => `motorcycle_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `motorcycle_fuel_type = '${e}'`).join(' OR ');
    const modeArrConditions = modeArr?.map(e => `motorcycle_driving_mode = '${e}'`).join(' OR ');
    const colorArrConditions = colorArr?.map(e => `motorcycle_exterior_colour = '${e}'`).join(' OR ');
@@ -462,9 +482,7 @@ const updateMotorcycle = (
    motorcycle_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   motorcycle_img,
-   motorcycle_img_name
+   user_email
 ) => fetch(
    UPDATE_MOTORCYCLE,
    motorcycle_id,
@@ -498,12 +516,12 @@ const updateMotorcycle = (
    motorcycle_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   motorcycle_img,
-   motorcycle_img_name
+   user_email
 )
 const deleteMotorcycle = (motorcycle_id) => fetch(DELETE_MOTORCYCLE, motorcycle_id)
 const updateStatus = (motorcycle_id, status) => fetch(UPDATE_STATUS, motorcycle_id, status)
+const addImage = (motorcycle_id, motorcycle_img, motorcycle_img_name) => fetch(ADD_PHOTO, motorcycle_id, motorcycle_img, motorcycle_img_name)
+const deleteImage = (motorcycle_id, motorcycle_images_url, motorcycle_images_name) => fetch(DELETE_PHOTO, motorcycle_id, motorcycle_images_url, motorcycle_images_name)
 
 module.exports = {
    motorcycleListAdmin,
@@ -514,5 +532,7 @@ module.exports = {
    foundMotorCycle,
    updateMotorcycle,
    deleteMotorcycle,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

@@ -145,6 +145,28 @@ const UPDATE_TRAILER = `
    RETURNING *;
 `;
 
+const ADD_PHOTO = `
+   UPDATE
+      trailers
+   SET
+      trailer_images_url = array_cat(trailer_images_url, $2),
+      trailer_images_name = array_cat(trailer_images_name, $3)
+   WHERE
+      trailer_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      trailers
+   SET
+      trailer_images_url = $2,
+      trailer_images_name = $3
+   WHERE
+      trailer_id = $1
+   RETURNING *;
+`;
+
 const trailerListAdmin = (limit, offset) => {
    const LIST = `
       SELECT
@@ -196,7 +218,7 @@ const trailerList = (
    offset,
    limit
 ) => {
-//   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
    const securityString = securityArr?.map(e => `'${e}'`).join(', ');
 
@@ -275,7 +297,7 @@ const trailerCount = (
    picture,
    video
 ) => {
-//   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
    const securityString = securityArr?.map(e => `'${e}'`).join(', ');
 
@@ -445,6 +467,8 @@ const updateTrailer = (
    trailer_img,
    trailer_img_name
 )
+const addImage = (id, truck_img, truck_img_name) => fetch(ADD_PHOTO, id, truck_img, truck_img_name)
+const deleteImage = (id, trailer_images_url, trailer_images_name) => fetch(DELETE_PHOTO, id, trailer_images_url, trailer_images_name)
 
 module.exports = {
    trailerListAdmin,
@@ -455,5 +479,7 @@ module.exports = {
    trailerCount,
    addTrailer,
    updateTrailer,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

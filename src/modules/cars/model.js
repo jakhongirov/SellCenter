@@ -178,9 +178,7 @@ const UPDATE_CAR = `
       car_trailer_coupling = $52,
       car_parking_sensors = $53,
       car_cruise_control = $54,
-      others = $55,
-      car_images_url = $56,
-      car_images_name = $57
+      others = $55
    WHERE
       car_id = $1
    RETURNING *;
@@ -216,6 +214,28 @@ const FOUND_CAR_BY_ID = `
       a.user_id = b.user_id
    WHERE
       car_id = $1
+`;
+
+const ADD_PHOTO = `
+   UPDATE
+      cars
+   SET
+      car_images_url = array_cat(car_images_url, $2),
+      car_images_name = array_cat(car_images_name, $3)
+   WHERE
+      car_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      cars
+   SET
+      car_images_url = $2,
+      car_images_name = $3
+   WHERE
+      car_id = $1
+   RETURNING *;
 `;
 
 const carsList = (limit, offset) => {
@@ -705,9 +725,7 @@ const updateCar = (
    car_trailer_coupling,
    car_parking_sensors,
    car_cruise_control,
-   others,
-   car_img,
-   car_img_name
+   others
 ) => fetch(
    UPDATE_CAR,
    car_id,
@@ -764,12 +782,12 @@ const updateCar = (
    car_trailer_coupling,
    car_parking_sensors,
    car_cruise_control,
-   others,
-   car_img,
-   car_img_name
+   others
 )
 const deleteCar = (car_id) => fetch(DELETE_CAR, car_id)
 const updateStatus = (car_id, status) => fetch(UPDATE_STATUS, car_id, status)
+const addImage = (car_id, car_img, car_img_name) => fetch(ADD_PHOTO, car_id, car_img, car_img_name)
+const deleteImage = (car_id, car_image_url, car_image_name) => fetch(DELETE_PHOTO, car_id, car_image_url, car_image_name)
 
 module.exports = {
    carsList,
@@ -782,5 +800,7 @@ module.exports = {
    deleteCar,
    addEngineData,
    addInteriorData,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

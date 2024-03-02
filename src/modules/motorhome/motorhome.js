@@ -477,7 +477,6 @@ module.exports = {
 
    PUT_MOTOR_HOME: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             id,
             motor_home_make,
@@ -527,40 +526,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const motorhome_img_name = [];
-         const motorhome_img = [];
-         const foundMotorhome = await model.foundMotorhome(id)
-
-         if (uploadPhoto?.length) {
-            foundMotorhome?.motor_home_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               motorhome_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               motorhome_img_name.push(e.filename);
-            });
-         } else {
-            foundMotorhome?.motor_home_images_url.forEach((e) => {
-               motorhome_img.push(e);
-            });
-            foundMotorhome?.motor_home_images_name.forEach((e) => {
-               motorhome_img_name.push(e);
-            });
-         }
-
          const updateMotorhome = await model.updateMotorhome(
             id,
             motor_home_make,
@@ -605,8 +570,6 @@ module.exports = {
             motor_home_discount_offers,
             motor_home_vendor,
             motor_home_dealer_rating,
-            motorhome_img,
-            motorhome_img_name,
             user_id,
             user_phone,
             user_email
@@ -622,6 +585,108 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { id } = req.body
+         const motorhome_img_name = [];
+         const motorhome_img = [];
+         const foundMotorhome = await model.foundMotorhome(id)
+
+         if (foundMotorhome) {
+            uploadPhoto?.forEach((e) => {
+               motorhome_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               motorhome_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(id, motorhome_img, motorhome_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { id, delete_image_url, delete_image_name } = req.body
+         const foundMotorhome = await model.foundMotorhome(id)
+
+         if (foundMotorhome) {
+            const motor_home_images_url = foundMotorhome?.motor_home_images_url.filter(e => !delete_image_url?.includes(e))
+            const motor_home_images_name = foundMotorhome?.motor_home_images_name.filter(e => !delete_image_name?.includes(e))
+
+            delete_image_name.forEach((e) => {
+               new FS(
+                  path.resolve(
+                     __dirname,
+                     '..',
+                     '..',
+                     '..',
+                     'public',
+                     'images',
+                     `${e}`,
+                  ),
+               ).delete();
+            });
+
+            const deleteImage = await model.deleteImage(id, motor_home_images_url, motor_home_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 

@@ -424,7 +424,6 @@ module.exports = {
          const car_img_name = [];
          const car_img = [];
 
-         console.log(uploadPhoto);
 
          uploadPhoto?.forEach((e) => {
             car_img.push(
@@ -609,7 +608,6 @@ module.exports = {
 
    UPDATE_CAR: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             car_id,
             user_id,
@@ -668,42 +666,6 @@ module.exports = {
             others
          } = req.body
 
-         let car_img_name = [];
-         let car_img = [];
-         const foundCar = await model.foundCar(car_id)
-
-         if (uploadPhoto?.length) {
-            foundCar?.car_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               car_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               car_img_name.push(e.filename);
-            });
-         } else {
-            foundCar?.car_images_url.forEach((e) => {
-               car_img.push(e);
-            });
-            foundCar?.car_images_name.forEach((e) => {
-               car_img_name.push(e);
-            });
-         }
-
-         console.log(others, extras);
-
          const updateCar = await model.updateCar(
             car_id,
             user_id,
@@ -760,8 +722,6 @@ module.exports = {
             car_parking_sensors,
             car_cruise_control,
             others?.split(','),
-            car_img,
-            car_img_name
          )
 
          if (updateCar) {
@@ -774,6 +734,108 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { car_id } = req.body
+         let car_img_name = [];
+         let car_img = [];
+         const foundCar = await model.foundCar(car_id)
+
+         if (foundCar) {
+            uploadPhoto?.forEach((e) => {
+               car_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               car_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(car_id, car_img, car_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { car_id, delete_image_url, delete_image_name } = req.body
+         const foundCar = await model.foundCar(car_id)
+
+         if (foundCar) {
+            const car_image_url = foundCar?.car_images_url.filter(e => !delete_image_url?.includes(e))
+            const car_image_name = foundCar?.car_images_name.filter(e => !delete_image_name?.includes(e))
+
+            delete_image_name.forEach((e) => {
+               new FS(
+                  path.resolve(
+                     __dirname,
+                     '..',
+                     '..',
+                     '..',
+                     'public',
+                     'images',
+                     `${e}`,
+                  ),
+               ).delete();
+            });
+
+            const deleteImage = await model.deleteImage(car_id, car_image_url, car_image_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 

@@ -182,7 +182,9 @@ router
    .post('/car/add', FileUpload.array("photos"), cars.POST_BASIC_DATA)
    .put('/car/add/engine', cars.PUT_ENGINE)
    .put('/car/add/interior', cars.PUT_INTERIOR)
-   .put('/car/update', FileUpload.array("photos"), cars.UPDATE_CAR)
+   .put('/car/update', cars.UPDATE_CAR)
+   .put('/car/update/add/photo', FileUpload.array("photos"), cars.ADD_PHOTO)
+   .put('/car/update/delete/photo', cars.DELETE_PHOTO)
    .put('/car/update/status', cars.UPDATE_STATUS)
    .delete('/car/delete', cars.DELETE_CAR)
 
@@ -205,7 +207,9 @@ router
    .post('/motorcycles/count', motorcycle.GET_MOTORCYCLE_COUNT)
    .get('/motorcycles/:id', motorcycle.GET_MOTORCYCLE_ID)
    .post('/motorcycles/add', FileUpload.array("photos"), motorcycle.POST_MOTORCYCLE)
-   .put('/motorcycles/update', FileUpload.array("photos"), motorcycle.PUT_MOTORCYCLE)
+   .put('/motorcycles/update', motorcycle.PUT_MOTORCYCLE)
+   .put('/motorcycles/update/add/photo', FileUpload.array("photos"), motorcycle.ADD_PHOTO)
+   .put('/motorcycles/update/delete/photo', motorcycle.DELETE_PHOTO)
    .put('/motorcycles/update/status', motorcycle.UPDATE_STATUS)
    .delete('/motorcycles/delete', motorcycle.DELETE_MOTORCYCLE)
 
@@ -228,7 +232,9 @@ router
    .post('/motorhomes/count', motorhomes.GET_COUNT_MOTOR_HOME)
    .get('/motorhomes/:id', motorhomes.GET_MOTORHOME_ID)
    .post('/motorhomes/add', FileUpload.array("photos"), motorhomes.POST_MOTOR_HOME)
-   .put('/motorhomes/update', FileUpload.array("photos"), motorhomes.PUT_MOTOR_HOME)
+   .put('/motorhomes/update', motorhomes.PUT_MOTOR_HOME)
+   .put('/motorhomes/update/add/photo', FileUpload.array("photos"), motorhomes.ADD_PHOTO)
+   .put('/motorhomes/update/delete/photo', motorhomes.DELETE_PHOTO)
    .put('/motorhomes/update/status', motorhomes.UPDATE_STATUS)
    .delete('/motorhomes/delete', motorhomes.DELETE_MOTOR_HOME)
 
@@ -251,7 +257,9 @@ router
    .post('/trucks/count', trucks.GET_TRUCK_COUNT)
    .get('/trucks/:id', trucks.GET_TRUCK_ID)
    .post('/trucks/add', FileUpload.array("photos"), trucks.POST_TRUCK)
-   .put('/trucks/update', FileUpload.array("photos"), trucks.PUT_TRUCK)
+   .put('/trucks/update', trucks.PUT_TRUCK)
+   .put('/trucks/update/add/photo', FileUpload.array("photos"), trucks.ADD_PHOTO)
+   .put('/trucks/update/delete/photo', trucks.DELETE_PHOTO)
    .put('/trucks/update/status', trucks.UPDATE_STATUS)
    .delete('/trucks/delete', trucks.DELETE_TRUCK)
 
