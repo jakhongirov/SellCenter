@@ -800,22 +800,11 @@ module.exports = {
          const foundCar = await model.foundCar(car_id)
 
          if (foundCar) {
-            const car_image_url = foundCar?.car_images_url.filter(e => !delete_image_url?.includes(e))
-            const car_image_name = foundCar?.car_images_name.filter(e => !delete_image_name?.includes(e))
+            const car_image_url = foundCar?.car_images_url.filter(e => e != delete_image_url)
+            const car_image_name = foundCar?.car_images_name.filter(e => e != delete_image_name)
 
-            delete_image_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
 
             const deleteImage = await model.deleteImage(car_id, car_image_url, car_image_name)
 
