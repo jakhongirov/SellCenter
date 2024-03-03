@@ -1,4 +1,7 @@
+require('dotenv').config();
 const model = require('./model')
+const FS = require('../../lib/fs/fs');
+const path = require('path');
 
 module.exports = {
    GET_ADMIN: async (req, res) => {
