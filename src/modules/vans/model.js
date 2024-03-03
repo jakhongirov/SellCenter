@@ -181,10 +181,30 @@ const UPDATE_VAN = `
       van_vendor = $40,
       user_id = $41,
       user_phone = $42,
-      user_email = $43,
-      van_images_url = $44,
-      van_images_name = $45
+      user_email = $43
    WHERE 
+      van_id = $1
+   RETURNING *;
+`;
+
+const ADD_PHOTO = `
+   UPDATE
+      vans
+   SET
+      van_images_url = array_cat(van_images_url, $2),
+      van_images_name = array_cat(van_images_name, $3)
+   WHERE
+      van_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      vans
+   SET
+      van_images_url = $2,
+      van_images_name = $3
+   WHERE
       van_id = $1
    RETURNING *;
 `;
@@ -258,7 +278,7 @@ const vansList = (
    limit,
    offset
 ) => {
-//   const cityConditions = van_city?.map(city => `van_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = van_city?.map(city => `van_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `van_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `van_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -376,7 +396,7 @@ const vansCount = (
    picture,
    video,
 ) => {
-//   const cityConditions = van_city?.map(city => `van_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = van_city?.map(city => `van_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `van_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `van_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -577,8 +597,6 @@ const updateVan = (
    user_id,
    user_phone,
    user_email,
-   van_img,
-   van_img_name
 ) => fetch(
    UPDATE_VAN,
    id,
@@ -623,10 +641,10 @@ const updateVan = (
    van_vendor,
    user_id,
    user_phone,
-   user_email,
-   van_img,
-   van_img_name
+   user_email
 )
+const addImage = (id, van_img, van_img_name) => fetch(ADD_PHOTO, id, van_img, van_img_name)
+const deleteImage = (id, van_images_url, van_images_name) => fetch(DELETE_PHOTO, id, van_images_url, van_images_name)
 
 module.exports = {
    vanListAdmin,
@@ -637,5 +655,7 @@ module.exports = {
    vansCount,
    addVan,
    updateVan,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

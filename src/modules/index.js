@@ -307,7 +307,9 @@ router
    .post('/vans/count', vans.GET_VAN_COUNT)
    .get('/vans/:id', vans.GET_VAN_ID)
    .post('/vans/add', FileUpload.array("photos"), vans.POST_VAN)
-   .put('/vans/update', FileUpload.array("photos"), vans.PUT_VAN)
+   .put('/vans/update', vans.PUT_VAN)
+   .put('/vans/update/add/photo', FileUpload.array("photos"), vans.ADD_PHOTO)
+   .put('/vans/update/delete/photo', vans.DELETE_PHOTO)
    .put('/vans/update/status', vans.UPDATE_STATUS)
    .delete('/vans/delete', vans.DELETE_VAN)
 

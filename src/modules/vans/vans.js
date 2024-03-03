@@ -465,7 +465,6 @@ module.exports = {
 
    PUT_VAN: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             id,
             van_make,
@@ -512,40 +511,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundVan = await model.foundVan(id)
-         const van_img_name = [];
-         const van_img = [];
-
-         if (uploadPhoto.length) {
-            foundVan?.van_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               van_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               van_img_name.push(e.filename);
-            });
-         } else {
-            foundVan?.van_images_url.forEach((e) => {
-               van_img.push(e);
-            });
-            foundVan?.van_images_name.forEach((e) => {
-               van_img_name.push(e);
-            });
-         }
-
          const updateVan = await model.updateVan(
             id,
             van_make,
@@ -589,9 +554,7 @@ module.exports = {
             van_vendor,
             user_id,
             user_phone,
-            user_email,
-            van_img,
-            van_img_name
+            user_email
          )
 
          if (updateVan) {
@@ -604,6 +567,97 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { id } = req.body
+         const foundVan = await model.foundVan(id)
+         const van_img_name = [];
+         const van_img = [];
+
+         if (foundVan) {
+            uploadPhoto?.forEach((e) => {
+               van_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               van_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(id, van_img, van_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { id, delete_image_url, delete_image_name } = req.body
+         const foundVan = await model.foundVan(id)
+
+         if (foundVan) {
+            const van_images_url = foundVan?.van_images_url.filter(e => e != delete_image_url)
+            const van_images_name = foundVan?.van_images_name.filter(e => e != delete_image_name)
+
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
+
+            const deleteImage = await model.deleteImage(id, van_images_url, van_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 
