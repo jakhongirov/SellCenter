@@ -394,40 +394,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundTrailer = await model.foundTrailer(id)
-         const trailer_img_name = [];
-         const trailer_img = [];
-
-         if (uploadPhoto.length) {
-            foundTrailer?.truck_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               trailer_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               trailer_img_name.push(e.filename);
-            });
-         } else {
-            foundTrailer?.trailer_images_url.forEach((e) => {
-               trailer_img.push(e);
-            });
-            foundTrailer?.trailer_images_name.forEach((e) => {
-               trailer_img_name.push(e);
-            });
-         }
-
          const updateTrailer = await model.updateTrailer(
             id,
             trailer_make,
@@ -457,8 +423,6 @@ module.exports = {
             user_id,
             user_phone,
             user_email,
-            trailer_img,
-            trailer_img_name
          )
 
          if (updateTrailer) {

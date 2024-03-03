@@ -137,9 +137,7 @@ const UPDATE_TRAILER = `
       trailer_dealer_rating = $25,
       user_id = $26,
       user_phone = $27,
-      user_email = $28,
-      trailer_images_url = $29,
-      trailer_images_name = $30
+      user_email = $28
    WHERE
       trailer_id = $1
    RETURNING *;
@@ -431,9 +429,7 @@ const updateTrailer = (
    trailer_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   trailer_img,
-   trailer_img_name
+   user_email
 ) => fetch(
    UPDATE_TRAILER,
    id,
@@ -463,9 +459,7 @@ const updateTrailer = (
    trailer_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   trailer_img,
-   trailer_img_name
+   user_email
 )
 const addImage = (id, truck_img, truck_img_name) => fetch(ADD_PHOTO, id, truck_img, truck_img_name)
 const deleteImage = (id, trailer_images_url, trailer_images_name) => fetch(DELETE_PHOTO, id, trailer_images_url, trailer_images_name)
