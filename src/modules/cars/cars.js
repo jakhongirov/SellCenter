@@ -697,7 +697,7 @@ module.exports = {
             car_interior_material,
             car_airbags,
             car_air_conditioning,
-            extras?.split(','),
+            extras,
             car_vendor,
             car_dealer_rating,
             car_discount_offers,
@@ -721,7 +721,7 @@ module.exports = {
             car_trailer_coupling,
             car_parking_sensors,
             car_cruise_control,
-            others?.split(','),
+            others,
          )
 
          console.log(req.body)
