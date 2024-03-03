@@ -282,7 +282,9 @@ router
    .post('/trailers/count', trailers.GET_TRAILER_COUNT)
    .get('/trailers/:id', trailers.GET_TRAILER_BY_ID)
    .post('/trailers/add', FileUpload.array("photos"), trailers.POST_TRAILER)
-   .put('/trailers/update', FileUpload.array("photos"), trailers.PUT_TRAILER)
+   .put('/trailers/update', trailers.PUT_TRAILER)
+   .put('/trailers/update/add/photo', FileUpload.array("photos"), trailers.ADD_PHOTO)
+   .put('/trailers/update/delete/photo', trailers.DELETE_PHOTO)
    .put('/trailers/update/status', trailers.UPDATE_STATUS)
    .delete('/trailers/delete', trailers.DELETE_TRAILER)
 
