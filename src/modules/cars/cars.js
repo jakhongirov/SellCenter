@@ -724,6 +724,8 @@ module.exports = {
             others?.split(','),
          )
 
+         console.log(req.body)
+         console.log(updateCar)
          if (updateCar) {
             return res.json({
                status: 200,
