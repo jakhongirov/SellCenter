@@ -248,11 +248,11 @@ module.exports = {
          if (foundCompany?.company_image_url && foundCompany?.company_image_name) {
             const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${foundCompany?.company_image_name}`))
             deleteOldImg.delete()
-            company_img_name = uploadPhoto.filename
-            company_img_url = `${process.env.BACKEND_URL}/${uploadPhoto.filename}`
+            company_img_name = uploadPhoto?.filename
+            company_img_url = `${process.env.BACKEND_URL}/${uploadPhoto?.filename}`
          } else {
-            company_img_name = uploadPhoto.filename
-            company_img_url = `${process.env.BACKEND_URL}/${uploadPhoto.filename}`
+            company_img_name = uploadPhoto?.filename
+            company_img_url = `${process.env.BACKEND_URL}/${uploadPhoto?.filename}`
          }
 
          const editPhoto = await model.editPhoto(company_id, company_img_url, company_img_name)
