@@ -537,22 +537,11 @@ module.exports = {
          const foundTrailer = await model.foundTrailer(id)
 
          if (foundTrailer) {
-            const trailer_images_url = foundTrailer?.trailer_images_url.filter(e => !delete_image_url?.includes(e))
-            const trailer_images_name = foundTrailer?.trailer_images_name.filter(e => !delete_image_name?.includes(e))
-
-            delete_image_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
+            const trailer_images_url = foundTrailer?.trailer_images_url.filter(e => e != delete_image_url)
+            const trailer_images_name = foundTrailer?.trailer_images_name.filter(e => e != delete_image_name)
+            
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
 
             const deleteImage = await model.deleteImage(id, trailer_images_url, trailer_images_name)
 

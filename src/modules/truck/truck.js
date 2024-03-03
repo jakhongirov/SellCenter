@@ -625,22 +625,11 @@ module.exports = {
          const foundTruck = await model.foundTruck(id)
 
          if (foundTruck) {
-            const truck_images_url = foundTruck?.truck_images_url.filter(e => !delete_image_url?.includes(e))
-            const truck_images_name = foundTruck?.truck_images_name.filter(e => !delete_image_name?.includes(e))
-      
-            delete_image_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
+            const truck_images_url = foundTruck?.truck_images_url.filter(e => e != delete_image_url)
+            const truck_images_name = foundTruck?.truck_images_name.filter(e => e != delete_image_name)
+
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
 
             const deleteImage = await model.deleteImage(id, truck_images_url, truck_images_name)
 

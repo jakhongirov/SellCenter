@@ -527,23 +527,11 @@ module.exports = {
          const foundMotorCycle = await model.foundMotorCycle(motorcycle_id)
 
          if (foundMotorCycle) {
-            const motorcycle_images_url = foundMotorCycle?.motorcycle_images_url.filter(e => !delete_image_url?.includes(e))
-            const motorcycle_images_name = foundMotorCycle?.motorcycle_images_name.filter(e => !delete_image_name?.includes(e))
+            const motorcycle_images_url = foundMotorCycle?.motorcycle_images_url.filter(e => e != delete_image_url)
+            const motorcycle_images_name = foundMotorCycle?.motorcycle_images_name.filter(e => e != delete_image_name)
 
-            delete_image_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
             const deleteImage = await model.deleteImage(motorcycle_id, motorcycle_images_url, motorcycle_images_name)
 
             if (deleteImage) {
