@@ -361,12 +361,15 @@ module.exports = {
 
          if (id) {
             const foundCarById = await model.foundCarById(id)
+            const foundCompany = await model.foundCompany(foundCarById?.user_id)
+
 
             if (foundCarById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundCarById
+                  data: foundCarById,
+                  company: foundCompany
                })
             } else {
                return res.json({

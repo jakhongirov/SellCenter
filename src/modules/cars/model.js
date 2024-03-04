@@ -216,6 +216,15 @@ const FOUND_CAR_BY_ID = `
       car_id = $1
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const ADD_PHOTO = `
    UPDATE
       cars
@@ -541,6 +550,7 @@ const foundCarsCount = (
    return fetch(FOUND_CARS_COUNT)
 }
 const foundCarById = (id) => fetch(FOUND_CAR_BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundCar = (car_id) => fetch(FOUND_CAR, car_id)
 const addCar = (
    user_id,
@@ -797,6 +807,7 @@ module.exports = {
    updateCar,
    foundCar,
    foundCarById,
+   foundCompany,
    deleteCar,
    addEngineData,
    addInteriorData,
