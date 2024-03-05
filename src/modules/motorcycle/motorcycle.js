@@ -607,6 +607,8 @@ module.exports = {
          const { id } = req.body
          const foundMotorCycle = await model.foundMotorCycle(id)
 
+         console.log(id);
+
          if (foundMotorCycle) {
             foundMotorCycle?.motorcycle_images_name.forEach((e) => {
                new FS(
