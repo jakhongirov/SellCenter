@@ -170,7 +170,7 @@ CREATE TABLE motorcycles (
    motorcycle_number_owners int,
    motorcycle_approved_used_programme text,
    motorcycle_dealer_rating int DEFAULT 0,
-   motorcycle_active boolean DEFAULT false,
+   motorcycle_active boolean DEFAULT true,
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
