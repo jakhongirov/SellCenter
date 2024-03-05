@@ -406,7 +406,7 @@ CREATE TABLE vans (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   van_active boolean DEFAULT false,
+   van_active boolean DEFAULT true,
    van_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -465,7 +465,7 @@ CREATE TABLE semi_trailer_trucks (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   truck_active boolean DEFAULT false,
+   truck_active boolean DEFAULT true,
    truck_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -511,7 +511,7 @@ CREATE TABLE semi_trailers (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   trailer_active boolean DEFAULT false,
+   trailer_active boolean DEFAULT true,
    trailer_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -567,7 +567,7 @@ CREATE TABLE coaches (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   coache_active boolean DEFAULT false,
+   coache_active boolean DEFAULT true,
    coache_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -616,7 +616,7 @@ CREATE TABLE agricultural_vehicles(
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   vehicle_active boolean DEFAULT false,
+   vehicle_active boolean DEFAULT true,
    vehicle_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -661,7 +661,7 @@ CREATE TABLE construction_machines (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   machine_active boolean DEFAULT false,
+   machine_active boolean DEFAULT true,
    machine_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -709,7 +709,7 @@ CREATE TABLE forklift_trucks (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   forklift_active boolean DEFAULT false,
+   forklift_active boolean DEFAULT true,
    forklift_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
