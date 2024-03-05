@@ -205,7 +205,7 @@ router
    .get('/motorcycles/admin/list', motorcycle.GET_ADMIN)
    .post('/motorcycles/list', motorcycle.GET_MOTORCYCLE)
    .post('/motorcycles/count', motorcycle.GET_MOTORCYCLE_COUNT)
-   .get('/motorcycle/:id', motorcycle.GET_MOTORCYCLE_ID)
+   .get('/motorcycles/:id', motorcycle.GET_MOTORCYCLE_ID)
    .post('/motorcycles/add', FileUpload.array("photos"), motorcycle.POST_MOTORCYCLE)
    .put('/motorcycles/update', motorcycle.PUT_MOTORCYCLE)
    .put('/motorcycles/update/add/photo', FileUpload.array("photos"), motorcycle.ADD_PHOTO)
@@ -227,7 +227,7 @@ router
    .delete('/motorhome/delete/model', motorhomeBrand.DELETE_MODEL)
 
    // Motor homes
-   .get('/motorhomes/admin/list', motorhomes.GET_MOTOR_HOME)
+   .get('/motorhomes/admin/list', motorhomes.GET_ADMIN)
    .post('/motorhomes/list', motorhomes.GET_MOTOR_HOME)
    .post('/motorhomes/count', motorhomes.GET_COUNT_MOTOR_HOME)
    .get('/motorhomes/:id', motorhomes.GET_MOTORHOME_ID)
