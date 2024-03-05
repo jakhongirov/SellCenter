@@ -343,7 +343,7 @@ module.exports = {
             motorcycle_transmission,
             motorcycle_cubic_capacity,
             motorcycle_exterior_colour,
-            others,
+            others?.split(''),
             motorcycle_vat,
             motorcycle_discount_offers,
             motorcycle_vendor,
