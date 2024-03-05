@@ -246,12 +246,14 @@ module.exports = {
 
          if (id) {
             const foundMotorcycleById = await model.foundMotorcycleById(id)
+            const foundCompany = await model.foundCompany(foundMotorcycleById?.user_id)
 
             if (foundMotorcycleById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundMotorcycleById
+                  data: foundMotorcycleById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -341,7 +343,7 @@ module.exports = {
             motorcycle_transmission,
             motorcycle_cubic_capacity,
             motorcycle_exterior_colour,
-            others?.split(','),
+            others,
             motorcycle_vat,
             motorcycle_discount_offers,
             motorcycle_vendor,
@@ -437,7 +439,7 @@ module.exports = {
             motorcycle_transmission,
             motorcycle_cubic_capacity,
             motorcycle_exterior_colour,
-            others?.split(','),
+            others,
             motorcycle_vat,
             motorcycle_discount_offers,
             motorcycle_vendor,

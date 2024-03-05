@@ -13,6 +13,15 @@ const BY_ID = `
       forklift_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_FORKLIFT = `
    SELECT 
       forklift_images_url,
@@ -152,6 +161,28 @@ const DELETE_FORKLIFT = `
    RETURNING *;
 `;
 
+const ADD_PHOTO = `
+   UPDATE
+      forklift_trucks
+   SET
+      forklift_images_url = array_cat(forklift_images_url, $2),
+      forklift_images_name = array_cat(forklift_images_name, $3)
+   WHERE
+      forklift_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      forklift_trucks
+   SET
+      forklift_images_url = $2,
+      forklift_images_name = $3
+   WHERE
+      forklift_id = $1
+   RETURNING *;
+`;
+
 const forkliftListAdmin = (limit, offset) => {
    const LIST = `
       SELECT
@@ -167,6 +198,7 @@ const forkliftListAdmin = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundForkliftById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundForklift = (id) => fetch(FOUND_FORKLIFT, id)
 const deleteForklift = (id) => fetch(DELETE_FORKLIFT, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
@@ -207,7 +239,7 @@ const forkliftList = (
    limit,
    offset
 ) => {
-//   const cityConditions = forklift_city?.map(city => `forklift_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = forklift_city?.map(city => `forklift_city_zipcode = '${city}'`).join(' OR ');
    const fuelConditions = fuelArr?.map(e => `forklift_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `forklift_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -296,7 +328,7 @@ const forkliftCount = (
    video,
    day
 ) => {
-//   const cityConditions = forklift_city?.map(city => `forklift_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = forklift_city?.map(city => `forklift_city_zipcode = '${city}'`).join(' OR ');
    const fuelConditions = fuelArr?.map(e => `forklift_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `forklift_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -480,15 +512,20 @@ const updateForklift = (
    forklift_img,
    forklift_img_name
 )
+const addImage = (id, forklift_img, forklift_img_name) => fetch(ADD_PHOTO, id, forklift_img, forklift_img_name)
+const deleteImage = (id, forklift_images_url, forklift_images_name) => fetch(DELETE_PHOTO, id, forklift_images_url, forklift_images_name)
 
 module.exports = {
    forkliftListAdmin,
    forkliftList,
    forkliftCount,
    foundForkliftById,
+   foundCompany,
    foundForklift,
    addForklift,
    updateForklift,
    deleteForklift,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

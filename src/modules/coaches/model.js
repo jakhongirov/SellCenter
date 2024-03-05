@@ -13,6 +13,15 @@ const BY_ID = `
       coache_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_COACHE = `
    SELECT 
       coache_images_url,
@@ -167,9 +176,29 @@ const UPDATE_COACHE = `
       coache_dealer_rating = $35,
       user_id = $36,
       user_phone = $37,
-      user_email = $38,
-      coache_images_url = $39,
-      coache_images_name = $40
+      user_email = $38
+   WHERE
+      coache_id = $1
+   RETURNING *;
+`;
+
+const ADD_PHOTO = `
+   UPDATE
+      coaches
+   SET
+      coache_images_url = array_cat(coache_images_url, $2),
+      coache_images_name = array_cat(coache_images_name, $3)
+   WHERE
+      coache_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      coaches
+   SET
+      coache_images_url = $2,
+      coache_images_name = $3
    WHERE
       coache_id = $1
    RETURNING *;
@@ -190,6 +219,7 @@ const coacheListAdmin = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundCoacheById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundCoache = (id) => fetch(FOUND_COACHE, id)
 const deleteCoache = (id) => fetch(DELETE_COACHE, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
@@ -237,7 +267,7 @@ const coachesList = (
    limit,
    offset
 ) => {
-//   const cityConditions = coache_city?.map(city => `coache_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = coache_city?.map(city => `coache_city_zipcode = '${city}'`).join(' OR ');
    const fuelConditions = fuelArr?.map(e => `coache_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `coache_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -341,7 +371,7 @@ const coachesCount = (
    picture,
    video
 ) => {
-//   const cityConditions = coache_city?.map(city => `coache_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = coache_city?.map(city => `coache_city_zipcode = '${city}'`).join(' OR ');
    const fuelConditions = fuelArr?.map(e => `coache_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `coache_transmission = '${e}'`).join(' OR ');
    const colorConditions = colorArr?.map(e => `coache_exterior_colour = '${e}'`).join(' OR ');
@@ -520,9 +550,7 @@ const updateCoache = (
    coache_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   coache_img,
-   coache_img_name
+   user_email
 ) => fetch(
    UPDATE_COACHE,
    id,
@@ -562,19 +590,22 @@ const updateCoache = (
    coache_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   coache_img,
-   coache_img_name
+   user_email
 )
+const addImage = (id, coache_img, coache_img_name) => fetch(ADD_PHOTO, id, coache_img, coache_img_name)
+const deleteImage = (id, coache_images_url, coache_images_name) => fetch(DELETE_PHOTO, id, coache_images_url, coache_images_name)
 
 module.exports = {
    coacheListAdmin,
    foundCoacheById,
+   foundCompany,
    foundCoache,
    deleteCoache,
    coachesList,
    coachesCount,
    addCoache,
    updateCoache,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

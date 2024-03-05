@@ -298,12 +298,14 @@ module.exports = {
 
          if (id) {
             const foundTruckById = await model.foundTruckById(id)
+            const foundCompany = await model.foundCompany(foundTruckById?.user_id)
 
             if (foundTruckById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundTruckById
+                  data: foundTruckById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -456,7 +458,6 @@ module.exports = {
 
    PUT_TRUCK: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             id,
             truck_make,
@@ -525,7 +526,7 @@ module.exports = {
             truck_transmission,
             truck_emission_class,
             truck_emissions_sticker,
-            features?.split(','),
+            features,
             truck_air_conditioning,
             truck_axles,
             truck_wheel_formula,
@@ -534,7 +535,7 @@ module.exports = {
             truck_trailer_coupling_fix,
             truck_cruise_control,
             truck_driving_cab,
-            interior_features?.split(','),
+            interior_features,
             truck_exterior_colour,
             truck_damaged,
             truck_full_service_history,

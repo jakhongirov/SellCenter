@@ -13,6 +13,15 @@ const BY_ID = `
       motor_home_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_MOTOR_HOME = `
    SELECT
       motor_home_images_url,
@@ -234,6 +243,7 @@ const motorhomeListAdmin = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundMotorhomeById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundMotorhome = (id) => fetch(FOUND_MOTOR_HOME, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
 const deleteMotorhome = (id) => fetch(DELETE_MOTOR_HOME, id)
@@ -682,6 +692,7 @@ const deleteImage = (id, motor_home_images_url, motor_home_images_name) => fetch
 module.exports = {
    motorhomeListAdmin,
    foundMotorhomeById,
+   foundCompany,
    foundMotorhome,
    updateStatus,
    deleteMotorhome,

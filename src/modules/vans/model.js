@@ -13,6 +13,15 @@ const BY_ID = `
       van_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_VAN = `
    SELECT
       van_images_url,
@@ -224,6 +233,7 @@ const vanListAdmin = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundVanById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundVan = (id) => fetch(FOUND_VAN, id)
 const deleteVan = (id) => fetch(DELETE_VAN, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
@@ -649,6 +659,7 @@ const deleteImage = (id, van_images_url, van_images_name) => fetch(DELETE_PHOTO,
 module.exports = {
    vanListAdmin,
    foundVanById,
+   foundCompany,
    foundVan,
    deleteVan,
    vansList,

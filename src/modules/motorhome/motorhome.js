@@ -313,12 +313,14 @@ module.exports = {
 
          if (id) {
             const foundMotorhomeById = await model.foundMotorhomeById(id)
+            const foundCompany = await model.foundCompany(foundMotorhomeById?.user_id)
 
             if (foundMotorhomeById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundMotorhomeById
+                  data: foundMotorhomeById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -547,7 +549,7 @@ module.exports = {
             motor_home_transmission,
             motor_home_emission_class,
             motor_home_emissions_sticker,
-            features?.split(','),
+            features,
             motor_home_length,
             motor_home_gvw,
             motor_home_number_of_bunks,
@@ -557,7 +559,7 @@ module.exports = {
             motor_home_radio,
             motor_home_parking_sensors,
             motor_home_air_conditioning,
-            interior_features?.split(','),
+            interior_features,
             motor_home_exterior_colour,
             motor_home_vat,
             motor_home_damaged,

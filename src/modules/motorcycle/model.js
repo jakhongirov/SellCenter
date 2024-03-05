@@ -13,6 +13,15 @@ const FOUND_MOTORCYCLE_BY_ID = `
       motorcycle_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const ADD_MOTORCYCLE = `
    INSERT INTO
       motorcycles (
@@ -379,6 +388,7 @@ const motorcycleCount = (
    return fetch(FOUND_MOTORCYCLE_COUNT)
 }
 const foundMotorcycleById = (id) => fetch(FOUND_MOTORCYCLE_BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const addMotorcycle = (
    motorcycle_make,
    motorcycle_model,
@@ -528,6 +538,7 @@ module.exports = {
    motorcycleList,
    motorcycleCount,
    foundMotorcycleById,
+   foundCompany,
    addMotorcycle,
    foundMotorCycle,
    updateMotorcycle,

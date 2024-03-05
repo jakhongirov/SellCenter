@@ -13,6 +13,15 @@ const BY_ID = `
       machine_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_CONSTRUCTION = `
    SELECT 
       machine_images_url,
@@ -70,9 +79,7 @@ const UPDATE_CONSTRUCTION = `
       machine_dealer_rating = $24,
       user_id = $25,
       user_phone = $26,
-      user_email = $27,
-      machine_images_url = $28,
-      machine_images_name = $29
+      user_email = $27
    WHERE
       machine_id = $1
    RETURNING *;
@@ -142,6 +149,28 @@ const ADD_CONSTRUCTION = `
    RETURNING *;
 `;
 
+const ADD_PHOTO = `
+   UPDATE
+      construction_machines
+   SET
+      machine_images_url = array_cat(machine_images_url, $2),
+      machine_images_name = array_cat(machine_images_name, $3)
+   WHERE
+      machine_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      construction_machines
+   SET
+      machine_images_url = $2,
+      machine_images_name = $3
+   WHERE
+      machine_id = $1
+   RETURNING *;
+`;
+
 const constructionListAdmin = (limit, offset) => {
    const LIST = `
       SELECT
@@ -157,6 +186,7 @@ const constructionListAdmin = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundConstructionById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundConstruction = (id) => fetch(FOUND_CONSTRUCTION, id)
 const deleteConstruction = (id) => fetch(DELETE_CONSTRUCTION, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
@@ -191,7 +221,7 @@ const constructionList = (
    limit,
    offset
 ) => {
-//   const cityConditions = machine_city?.map(city = `machine_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = machine_city?.map(city = `machine_city_zipcode = '${city}'`).join(' OR ');
    const safetyString = safetyId?.map(e => `'${e}'`).join(', ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
 
@@ -266,7 +296,7 @@ const constructionCount = (
    video,
    day,
 ) => {
-//   const cityConditions = machine_city?.map(city => `machine_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = machine_city?.map(city => `machine_city_zipcode = '${city}'`).join(' OR ');
    const safetyString = safetyId?.map(e => `'${e}'`).join(', ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
 
@@ -395,9 +425,7 @@ const updateConstruction = (
    machine_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   construction_img,
-   construction_img_name
+   user_email
 ) => fetch(
    UPDATE_CONSTRUCTION,
    id,
@@ -426,19 +454,22 @@ const updateConstruction = (
    machine_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   construction_img,
-   construction_img_name
+   user_email
 )
+const addImage = (id, construction_img, construction_img_name) => fetch(ADD_PHOTO, id, construction_img, construction_img_name)
+const deleteImage = (id, machine_images_url, machine_images_name) => fetch(DELETE_PHOTO, id, machine_images_url, machine_images_name)
 
 module.exports = {
    constructionListAdmin,
    constructionList,
    constructionCount,
    foundConstructionById,
+   foundCompany,
    addConstruction,
    foundConstruction,
    updateConstruction,
    deleteConstruction,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

@@ -233,12 +233,14 @@ module.exports = {
 
          if (id) {
             const foundTrailerById = await model.foundTrailerById(id)
+            const foundCompany = await model.foundCompany(foundTrailerById?.user_id)
 
             if (foundTrailerById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundTrailerById
+                  data: foundTrailerById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -410,11 +412,11 @@ module.exports = {
             trailer_country,
             trailer_city_zipcode,
             trailer_radius,
-            features?.split(','),
+            features,
             trailer_axles,
             trailer_gvw,
             trailer_load_capacity,
-            security?.split(','),
+            security,
             trailer_new_hu,
             trailer_renting_possible,
             trailer_discount_offers,

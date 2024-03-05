@@ -275,12 +275,14 @@ module.exports = {
 
          if (id) {
             const foundCoacheById = await model.foundCoacheById(id)
+            const foundCompany = await model.foundCompany(foundCoacheById?.user_id)
 
             if (foundCoacheById) {
                return res.json({
                   status: 200,
                   message: 'Success',
-                  data: foundCoacheById
+                  data: foundCoacheById,
+                  companu: foundCompany
                })
             } else {
                return res.json({
@@ -423,7 +425,6 @@ module.exports = {
 
    PUT_COACHE: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             id,
             coache_make,
@@ -465,40 +466,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundCoache = await model.foundCoache(id)
-         const coache_img_name = [];
-         const coache_img = [];
-
-         if (uploadPhoto.length) {
-            foundCoache?.coache_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               coache_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               coache_img_name.push(e.filename);
-            });
-         } else {
-            foundCoache?.coache_images_url.forEach((e) => {
-               coache_img.push(e);
-            });
-            foundCoache?.coache_images_name.forEach((e) => {
-               coache_img_name.push(e);
-            });
-         }
-
          const updateCoache = await model.updateCoache(
             id,
             coache_make,
@@ -521,12 +488,12 @@ module.exports = {
             coache_transmission,
             coache_emission_class,
             coache_emissions_sticker,
-            features?.split(','),
+            features,
             coache_air_conditioning,
             coache_number_of_seats,
             coache_cruise_control,
             coache_trailer_coupling_fix,
-            interior_features?.split(','),
+            interior_features,
             coache_exterior_colour,
             coache_damaged,
             coache_full_service_history,
@@ -538,8 +505,6 @@ module.exports = {
             user_id,
             user_phone,
             user_email,
-            coache_img,
-            coache_img_name
          )
 
          if (updateCoache) {
@@ -552,6 +517,97 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { id } = req.body
+         const foundCoache = await model.foundCoache(id)
+         const coache_img_name = [];
+         const coache_img = [];
+
+         if (foundCoache) {
+            uploadPhoto?.forEach((e) => {
+               coache_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               coache_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(id, coache_img, coache_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { id, delete_image_url, delete_image_name } = req.body
+         const foundCoache = await model.foundCoache(id)
+
+         if (foundCoache) {
+            const coache_images_url = foundCoache?.coache_images_url.filter(e => e != delete_image_url)
+            const coache_images_name = foundCoache?.coache_images_name.filter(e => e != delete_image_name)
+
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
+
+            const deleteImage = await model.deleteImage(id, coache_images_url, coache_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 

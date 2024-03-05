@@ -306,12 +306,14 @@ module.exports = {
 
          if (id) {
             const foundVanById = await model.foundVanById(id)
+            const foundCompany = await model.foundCompany(foundVanById?.user_id)
 
             if (foundVanById) {
                return res.json({
                   status: 200,
                   message: 'Success',
-                  data: foundVanById
+                  data: foundVanById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -533,7 +535,7 @@ module.exports = {
             van_transmission,
             van_emission_class,
             van_emissions_sticker,
-            features?.split(","),
+            features,
             van_air_conditioning,
             van_gvw,
             van_parking_sensors,
@@ -542,7 +544,7 @@ module.exports = {
             van_number_of_seats,
             van_cruise_control,
             van_trailer_coupling_fix,
-            interior_features?.split(","),
+            interior_features,
             van_exterior_colour,
             van_damaged,
             van_approved_used_programme,

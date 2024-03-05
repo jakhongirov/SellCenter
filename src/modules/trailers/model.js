@@ -13,6 +13,15 @@ const BY_ID = `
       trailer_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_TRAILER = `
    SELECT
       trailer_images_url,
@@ -180,6 +189,7 @@ const trailerListAdmin = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundTrailerById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundTrailer = (id) => fetch(FOUND_TRAILER, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
 const deleteTrailer = (id) => fetch(DELETE_TRAILER, id)
@@ -467,6 +477,7 @@ const deleteImage = (id, trailer_images_url, trailer_images_name) => fetch(DELET
 module.exports = {
    trailerListAdmin,
    foundTrailerById,
+   foundCompany,
    foundTrailer,
    deleteTrailer,
    trailerList,

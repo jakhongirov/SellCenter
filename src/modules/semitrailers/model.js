@@ -13,6 +13,15 @@ const BY_ID = `
       trailer_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_TRAILER = `
    SELECT
       trailer_images_url,
@@ -137,9 +146,29 @@ const UPDATE_TRAILER = `
       trailer_dealer_rating = $25,
       user_id = $26,
       user_phone = $27,
-      user_email = $28,
-      trailer_images_url = $29,
-      trailer_images_name = $30
+      user_email = $28
+   WHERE
+      trailer_id = $1
+   RETURNING *;
+`;
+
+const ADD_PHOTO = `
+   UPDATE
+      semi_trailers
+   SET
+      trailer_images_url = array_cat(trailer_images_url, $2),
+      trailer_images_name = array_cat(trailer_images_name, $3)
+   WHERE
+      trailer_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      semi_trailers
+   SET
+      trailer_images_url = $2,
+      trailer_images_name = $3
    WHERE
       trailer_id = $1
    RETURNING *;
@@ -160,6 +189,7 @@ const semitrailerListAdmin = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundTrailerById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundTrailer = (id) => fetch(FOUND_TRAILER, id)
 const deleteTrailer = (id) => fetch(DELETE_TRAILER, id)
 const updateStatus = (id, status) => fetch(UPDATE_STAUS, id, status)
@@ -196,7 +226,7 @@ const trailerList = (
    offset,
    limit
 ) => {
-//   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
    const securityString = securityArr?.map(e => `'${e}'`).join(', ');
 
@@ -275,7 +305,7 @@ const trailerCount = (
    picture,
    video
 ) => {
-//   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = trailer_city?.map(city => `trailer_city_zipcode = '${city}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
    const securityString = securityArr?.map(e => `'${e}'`).join(', ');
 
@@ -409,9 +439,7 @@ const updateTrailer = (
    trailer_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   trailer_img,
-   trailer_img_name
+   user_email
 ) => fetch(
    UPDATE_TRAILER,
    id,
@@ -441,19 +469,22 @@ const updateTrailer = (
    trailer_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   trailer_img,
-   trailer_img_name
+   user_email
 )
+const addImage = (id, trailer_img, trailer_img_name) => fetch(ADD_PHOTO, id, trailer_img, trailer_img_name)
+const deleteImage = (id, trailer_images_url, trailer_images_name) => fetch(DELETE_PHOTO, id, trailer_images_url, trailer_images_name)
 
 module.exports = {
    semitrailerListAdmin,
    foundTrailerById,
+   foundCompany,
    foundTrailer,
    deleteTrailer,
    trailerList,
    trailerCount,
    addTrailer,
    updateTrailer,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

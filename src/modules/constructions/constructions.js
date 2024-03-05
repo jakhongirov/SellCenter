@@ -226,12 +226,14 @@ module.exports = {
 
          if (id) {
             const foundConstructionById = await model.foundConstructionById(id)
+            const foundCompany = await model.foundCompany(foundConstructionById?.user_id)
 
             if (foundConstructionById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundConstructionById
+                  data: foundConstructionById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -383,40 +385,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundConstruction = await model.foundConstruction(id)
-         const construction_img_name = [];
-         const construction_img = [];
-
-         if (uploadPhoto.length) {
-            foundConstruction?.machine_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               construction_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               construction_img_name.push(e.filename);
-            });
-         } else {
-            foundConstruction?.machine_images_url.forEach((e) => {
-               construction_img.push(e);
-            });
-            foundConstruction?.machine_images_name.forEach((e) => {
-               construction_img_name.push(e);
-            });
-         }
-
          const updateConstruction = await model.updateConstruction(
             id,
             machine_make,
@@ -434,9 +402,9 @@ module.exports = {
             machine_country,
             machine_city_zipcode,
             machine_radius,
-            features?.split(','),
+            features,
             machine_emissions_sticker,
-            safety?.split(','),
+            safety,
             machine_renting_possible,
             machine_road_licence,
             machine_discount_offers,
@@ -459,6 +427,97 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { id } = req.body
+         const foundConstruction = await model.foundConstruction(id)
+         const construction_img_name = [];
+         const construction_img = [];
+
+         if (foundConstruction) {
+            uploadPhoto?.forEach((e) => {
+               construction_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               construction_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(id, construction_img, construction_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { id, delete_image_url, delete_image_name } = req.body
+         const foundConstruction = await model.foundConstruction(id)
+
+         if (foundConstruction) {
+            const machine_images_url = foundConstruction?.machine_images_url.filter(e => e != delete_image_url)
+            const machine_images_name = foundConstruction?.machine_images_name.filter(e => e != delete_image_name)
+
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
+
+            const deleteImage = await model.deleteImage(id, machine_images_url, machine_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 

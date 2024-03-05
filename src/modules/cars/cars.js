@@ -363,7 +363,6 @@ module.exports = {
             const foundCarById = await model.foundCarById(id)
             const foundCompany = await model.foundCompany(foundCarById?.user_id)
 
-
             if (foundCarById) {
                return res.json({
                   status: 200,

@@ -13,6 +13,15 @@ const BY_ID = `
       truck_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_SEMI_TRUCK = `
    SELECT
       truck_images_url,
@@ -84,9 +93,7 @@ const UPDATE_SEMI_TRUCK = `
       truck_dealer_rating = $38,
       user_id = $39,
       user_phone = $40,
-      user_email = $41,
-      truck_images_url = $42,
-      truck_images_name = $43
+      user_email = $41
    WHERE
       truck_id = $1
    RETURNING *;
@@ -183,6 +190,28 @@ const ADD_SEMI_TRUCK = `
       ) RETURNING *;
 `;
 
+const ADD_PHOTO = `
+   UPDATE
+      semi_trailer_trucks
+   SET
+      truck_images_url = array_cat(truck_images_url, $2),
+      truck_images_name = array_cat(truck_images_name, $3)
+   WHERE
+      truck_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      semi_trailer_trucks
+   SET
+      truck_images_url = $2,
+      truck_images_name = $3
+   WHERE
+      truck_id = $1
+   RETURNING *;
+`;
+
 const semitruckListAdmin = (limit, offset) => {
    const LIST = `
       SELECT
@@ -196,6 +225,7 @@ const semitruckListAdmin = (limit, offset) => {
    `;
 }
 const foundSemitruckById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundTruck = (id) => fetch(FOUND_SEMI_TRUCK, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
 const deleteSemitruck = (id) => fetch(DELETE_SEMI_TRUCK, id)
@@ -246,7 +276,7 @@ const semitruckList = (
    limit,
    offset
 ) => {
-//   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `truck_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `truck_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -357,7 +387,7 @@ const semitruckCount = (
    picture,
    video,
 ) => {
-//   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
+   //   const cityConditions = truck_city?.map(city => `truck_city_zipcode = '${city}'`).join(' OR ');
    const fuelArrConditions = fuelArr?.map(e => `truck_fuel_type = '${e}'`).join(' OR ');
    const transmissionConditions = transmissionArr?.map(e => `truck_transmission = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
@@ -548,9 +578,7 @@ const updateSemitruck = (
    truck_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   truck_img,
-   truck_img_name
+   user_email
 ) => fetch(
    UPDATE_SEMI_TRUCK,
    id,
@@ -594,18 +622,21 @@ const updateSemitruck = (
    user_id,
    user_phone,
    user_email,
-   truck_img,
-   truck_img_name
 )
+const addImage = (id, truck_img, truck_img_name) => fetch(ADD_PHOTO, id, truck_img, truck_img_name)
+const deleteImage = (id, truck_images_url, truck_images_name) => fetch(DELETE_PHOTO, id, truck_images_url, truck_images_name)
 
 module.exports = {
    semitruckListAdmin,
    foundSemitruckById,
+   foundCompany,
    foundTruck,
    deleteSemitruck,
    semitruckList,
    semitruckCount,
    addSemitruck,
    updateSemitruck,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

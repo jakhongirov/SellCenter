@@ -13,6 +13,15 @@ const BY_ID = `
       vehicle_id = $1;
 `;
 
+const FOUND_COMPANY = `
+   SELECT
+      *
+   FROM
+      user_companies
+   WHERE
+      user_id = $1;
+`;
+
 const FOUND_VEHICLE = `
    SELECT
       vehicle_images_url,
@@ -74,9 +83,7 @@ const UPDATE_VEHICLE = `
       vehicle_dealer_rating = $28,
       user_id = $29,
       user_phone = $30,
-      user_email = $31,
-      vehicle_images_url = $32,
-      vehicle_images_name = $33
+      user_email = $31
    WHERE
       vehicle_id = $1
    RETURNING *;
@@ -154,6 +161,28 @@ const ADD_VEHICLE = `
    RETURNING *;
 `;
 
+const ADD_PHOTO = `
+   UPDATE
+      agricultural_vehicles
+   SET
+      vehicle_images_url = array_cat(vehicle_images_url, $2),
+      vehicle_images_name = array_cat(vehicle_images_name, $3)
+   WHERE
+      vehicle_id = $1
+   RETURNING *;
+`;
+
+const DELETE_PHOTO = `
+   UPDATE
+      agricultural_vehicles
+   SET
+      vehicle_images_url = $2,
+      vehicle_images_name = $3
+   WHERE
+      vehicle_id = $1
+   RETURNING *;
+`;
+
 const adgriculturalList = (limit, offset) => {
    const LIST = `
       SELECT
@@ -169,6 +198,7 @@ const adgriculturalList = (limit, offset) => {
    return fetchALL(LIST)
 }
 const foundVehcileById = (id) => fetch(BY_ID, id)
+const foundCompany = (user_id) => fetch(FOUND_COMPANY, user_id)
 const foundVehcile = (id) => fetch(FOUND_VEHICLE, id)
 const deleteVehicle = (id) => fetch(DELETE_VEHICLE, id)
 const updateStatus = (id, status) => fetch(UPDATE_STATUS, id, status)
@@ -208,7 +238,7 @@ const vehicleList = (
    limit,
    offset
 ) => {
-//   const cityConditions = vehicle_city?.map(e => `vehicle_city_zipcode = '${e}'`).join(' OR ');
+   //   const cityConditions = vehicle_city?.map(e => `vehicle_city_zipcode = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
    const interiorFeaturesString = interiorFeaturesId?.map(e => `'${e}'`).join(', ');
    const securityString = securityArr?.map(e => `'${e}'`).join(', ');
@@ -294,7 +324,7 @@ const vehicleCount = (
    picture,
    video
 ) => {
-//   const cityConditions = vehicle_city?.map(e => `vehicle_city_zipcode = '${e}'`).join(' OR ');
+   //   const cityConditions = vehicle_city?.map(e => `vehicle_city_zipcode = '${e}'`).join(' OR ');
    const featuresString = featuresId?.map(e => `'${e}'`).join(', ');
    const interiorFeaturesString = interiorFeaturesId?.map(e => `'${e}'`).join(', ');
    const securityString = securityArr?.map(e => `'${e}'`).join(', ');
@@ -441,9 +471,7 @@ const updateVehicle = (
    vehicle_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   vehicle_img,
-   vehicle_img_name
+   user_email
 ) => fetch(
    UPDATE_VEHICLE,
    id,
@@ -476,13 +504,14 @@ const updateVehicle = (
    vehicle_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   vehicle_img,
-   vehicle_img_name
+   user_email
 )
+const addImage = (id, vehicle_img, vehicle_img_name) => fetch(ADD_PHOTO, id, vehicle_img, vehicle_img_name)
+const deleteImage = (id, vehicle_images_url, vehicle_images_name) => fetch(DELETE_PHOTO, id, vehicle_images_url, vehicle_images_name)
 
 module.exports = {
    foundVehcileById,
+   foundCompany,
    foundVehcile,
    deleteVehicle,
    vehicleList,
@@ -490,5 +519,7 @@ module.exports = {
    addVehicle,
    updateVehicle,
    adgriculturalList,
-   updateStatus
+   updateStatus,
+   addImage,
+   deleteImage
 }

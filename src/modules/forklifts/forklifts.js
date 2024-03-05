@@ -250,12 +250,14 @@ module.exports = {
 
          if (id) {
             const foundForkliftById = await model.foundForkliftById(id)
+            const foundCompany = await model.foundCompany(foundForkliftById?.user_id)
 
             if (foundForkliftById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundForkliftById
+                  data: foundForkliftById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -416,41 +418,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundForklift = await model.foundForklift(id)
-         const forklift_img_name = [];
-         const forklift_img = [];
-
-         if (uploadPhoto.length) {
-            foundForklift?.forklift_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               forklift_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               forklift_img_name.push(e.filename);
-            });
-         } else {
-            foundForklift?.forklift_images_url.forEach((e) => {
-               forklift_img.push(e);
-            });
-            foundForklift?.forklift_images_name.forEach((e) => {
-               forklift_img_name.push(e);
-            });
-         }
-
-
          const updateForklift = await model.updateForklift(
             id,
             forklift_make,
@@ -470,11 +437,11 @@ module.exports = {
             forklift_radius,
             forklift_fuel_type,
             forklift_transmission,
-            features?.split(','),
+            features,
             forklift_lifting_capacity,
             forklift_lifting_height,
             forklift_height,
-            security?.split(','),
+            security,
             forklift_renting_possible,
             forklift_discount_offers,
             forklift_vendor,
@@ -482,8 +449,6 @@ module.exports = {
             user_id,
             user_phone,
             user_email,
-            forklift_img,
-            forklift_img_name
          )
 
          if (updateForklift) {
@@ -496,6 +461,97 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { id } = req.body
+         const foundForklift = await model.foundForklift(id)
+         const forklift_img_name = [];
+         const forklift_img = [];
+
+         if (foundForklift) {
+            uploadPhoto?.forEach((e) => {
+               forklift_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               forklift_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(id, forklift_img, forklift_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { id, delete_image_url, delete_image_name } = req.body
+         const foundForklift = await model.foundForklift(id)
+
+         if (foundForklift) {
+            const forklift_images_url = foundForklift?.forklift_images_url.filter(e => e != delete_image_url)
+            const forklift_images_name = foundForklift?.forklift_images_name.filter(e => e != delete_image_name)
+
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
+
+            const deleteImage = await model.deleteImage(id, forklift_images_url, forklift_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 

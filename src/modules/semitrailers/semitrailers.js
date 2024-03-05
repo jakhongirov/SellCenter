@@ -234,12 +234,14 @@ module.exports = {
 
          if (id) {
             const foundTrailerById = await model.foundTrailerById(id)
+            const foundCompany = await model.foundCompany(foundTrailerById?.user_id)
 
             if (foundTrailerById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundTrailerById
+                  data: foundTrailerById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -395,40 +397,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundTrailer = await model.foundTrailer(id)
-         const trailer_img_name = [];
-         const trailer_img = [];
-
-         if (uploadPhoto.length) {
-            foundTrailer?.truck_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               trailer_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               trailer_img_name.push(e.filename);
-            });
-         } else {
-            foundTrailer?.trailer_images_url.forEach((e) => {
-               trailer_img.push(e);
-            });
-            foundTrailer?.trailer_images_name.forEach((e) => {
-               trailer_img_name.push(e);
-            });
-         }
-
          const updateTrailer = await model.updateTrailer(
             id,
             trailer_make,
@@ -445,11 +413,11 @@ module.exports = {
             trailer_country,
             trailer_city_zipcode,
             trailer_radius,
-            features?.split(','),
+            features,
             trailer_axles,
             trailer_gvw,
             trailer_load_capacity,
-            security?.split(','),
+            security,
             trailer_new_hu,
             trailer_renting_possible,
             trailer_discount_offers,
@@ -458,8 +426,6 @@ module.exports = {
             user_id,
             user_phone,
             user_email,
-            trailer_img,
-            trailer_img_name
          )
 
          if (updateTrailer) {
@@ -484,6 +450,96 @@ module.exports = {
       }
    },
 
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { id } = req.body
+         const foundTrailer = await model.foundTrailer(id)
+         const trailer_img_name = [];
+         const trailer_img = [];
+
+         if (foundTrailer) {
+            uploadPhoto?.forEach((e) => {
+               trailer_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               trailer_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(id, trailer_img, trailer_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { id, delete_image_url, delete_image_name } = req.body
+         const foundTrailer = await model.foundTrailer(id)
+
+         if (foundTrailer) {
+            const trailer_images_url = foundTrailer?.trailer_images_url.filter(e => e != delete_image_url)
+            const trailer_images_name = foundTrailer?.trailer_images_name.filter(e => e != delete_image_name)
+
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
+
+            const deleteImage = await model.deleteImage(id, trailer_images_url, trailer_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
 
    UPDATE_STATUS: async (req, res) => {
       try {

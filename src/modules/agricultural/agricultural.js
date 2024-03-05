@@ -246,12 +246,14 @@ module.exports = {
 
          if (id) {
             const foundVehcileById = await model.foundVehcileById(id)
+            const foundCompany = await model.foundCompany(foundVehcileById?.user_id)
 
             if (foundVehcileById) {
                return res.json({
                   status: 200,
                   message: "Success",
-                  data: foundVehcileById
+                  data: foundVehcileById,
+                  company: foundCompany
                })
             } else {
                return res.json({
@@ -416,40 +418,6 @@ module.exports = {
             user_email
          } = req.body
 
-         const foundVehcile = await model.foundVehcile(id)
-         const vehicle_img_name = [];
-         const vehicle_img = [];
-
-         if (uploadPhoto.length) {
-            foundVehcile?.vehicle_images_name.forEach((e) => {
-               new FS(
-                  path.resolve(
-                     __dirname,
-                     '..',
-                     '..',
-                     '..',
-                     'public',
-                     'images',
-                     `${e}`,
-                  ),
-               ).delete();
-            });
-
-            uploadPhoto?.forEach((e) => {
-               vehicle_img.push(
-                  `${process.env.BACKEND_URL}/${e.filename}`,
-               );
-               vehicle_img_name.push(e.filename);
-            });
-         } else {
-            foundVehcile?.vehicle_images_url.forEach((e) => {
-               vehicle_img.push(e);
-            });
-            foundVehcile?.vehicle_images_name.forEach((e) => {
-               vehicle_img_name.push(e);
-            });
-         }
-
          const updateVehicle = await model.updateVehicle(
             id,
             vehicle_make,
@@ -468,11 +436,11 @@ module.exports = {
             vehicle_country,
             vehicle_city_zipcode,
             vehicle_radius,
-            features?.split(','),
+            features,
             vehicle_air_conditioning,
-            interior_features?.split(','),
+            interior_features,
             vehicle_emissions_sticker,
-            security?.split(','),
+            security,
             vehicle_municipal,
             vehicle_new_hu,
             vehicle_renting_possible,
@@ -481,9 +449,7 @@ module.exports = {
             vehicle_dealer_rating,
             user_id,
             user_phone,
-            user_email,
-            vehicle_img,
-            vehicle_img_name
+            user_email
          )
 
          if (updateVehicle) {
@@ -496,6 +462,97 @@ module.exports = {
             return res.json({
                status: 400,
                message: "Bad request"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   ADD_PHOTO: async (req, res) => {
+      try {
+         const uploadPhoto = req.files;
+         const { id } = req.body
+         const foundVehcile = await model.foundVehcile(id)
+         const vehicle_img_name = [];
+         const vehicle_img = [];
+
+         if (foundVehcile) {
+            uploadPhoto?.forEach((e) => {
+               vehicle_img.push(
+                  `${process.env.BACKEND_URL}/${e.filename}`,
+               );
+               vehicle_img_name.push(e.filename);
+            });
+
+            const addImage = await model.addImage(id, vehicle_img, vehicle_img_name)
+
+            if (addImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: addImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         res.json({
+            status: 500,
+            message: "Internal Server Error",
+         })
+      }
+   },
+
+   DELETE_PHOTO: async (req, res) => {
+      try {
+         const { id, delete_image_url, delete_image_name } = req.body
+         const foundVehcile = await model.foundVehcile(id)
+
+         if (foundVehcile) {
+            const vehicle_images_url = foundVehcile?.vehicle_images_url.filter(e => e != delete_image_url)
+            const vehicle_images_name = foundVehcile?.vehicle_images_name.filter(e => e != delete_image_name)
+
+            const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${delete_image_name}`))
+            deleteOldImg.delete()
+
+            const deleteImage = await model.deleteImage(id, vehicle_images_url, vehicle_images_name)
+
+            if (deleteImage) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteImage
+               })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.json({
+               status: 404,
+               message: "Not found"
             })
          }
 
