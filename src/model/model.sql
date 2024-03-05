@@ -237,7 +237,7 @@ CREATE TABLE motor_homes (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   motor_home_active boolean DEFAULT false,
+   motor_home_active boolean DEFAULT true,
    motor_home_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -298,7 +298,7 @@ CREATE TABLE trucks (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   truck_active boolean DEFAULT false,
+   truck_active boolean DEFAULT true,
    truck_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -344,7 +344,7 @@ CREATE TABLE trailers (
    user_id int REFERENCES users(user_id) ON DELETE CASCADE,
    user_phone text,
    user_email text,
-   trailer_active boolean DEFAULT false,
+   trailer_active boolean DEFAULT true,
    trailer_ad_create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 

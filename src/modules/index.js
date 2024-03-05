@@ -205,7 +205,7 @@ router
    .get('/motorcycles/admin/list', motorcycle.GET_ADMIN)
    .post('/motorcycles/list', motorcycle.GET_MOTORCYCLE)
    .post('/motorcycles/count', motorcycle.GET_MOTORCYCLE_COUNT)
-   .get('/motorcycles/:id', motorcycle.GET_MOTORCYCLE_ID)
+   .get('/motorcycle/:id', motorcycle.GET_MOTORCYCLE_ID)
    .post('/motorcycles/add', FileUpload.array("photos"), motorcycle.POST_MOTORCYCLE)
    .put('/motorcycles/update', motorcycle.PUT_MOTORCYCLE)
    .put('/motorcycles/update/add/photo', FileUpload.array("photos"), motorcycle.ADD_PHOTO)
