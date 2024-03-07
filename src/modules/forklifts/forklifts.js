@@ -384,7 +384,6 @@ module.exports = {
 
    PUT_FORKLIFT: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             id,
             forklift_make,

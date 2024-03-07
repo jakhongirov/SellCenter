@@ -75,9 +75,7 @@ const UPDATE_FORKLIFT = `
       forklift_dealer_rating = $27,
       user_id = $28,
       user_phone = $29,
-      user_email = $30,
-      forklift_images_url = $31,
-      forklift_images_name = $32
+      user_email = $30
    WHERE
       forklift_id = $1
    RETURNING *;
@@ -474,9 +472,7 @@ const updateForklift = (
    forklift_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   forklift_img,
-   forklift_img_name
+   user_email
 ) => fetch(
    UPDATE_FORKLIFT,
    id,
@@ -508,9 +504,7 @@ const updateForklift = (
    forklift_dealer_rating,
    user_id,
    user_phone,
-   user_email,
-   forklift_img,
-   forklift_img_name
+   user_email
 )
 const addImage = (id, forklift_img, forklift_img_name) => fetch(ADD_PHOTO, id, forklift_img, forklift_img_name)
 const deleteImage = (id, forklift_images_url, forklift_images_name) => fetch(DELETE_PHOTO, id, forklift_images_url, forklift_images_name)
