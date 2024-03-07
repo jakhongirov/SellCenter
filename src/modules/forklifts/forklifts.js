@@ -628,6 +628,11 @@ module.exports = {
                   status: 200,
                   message: "Success"
                })
+            } else {
+               return res.json({
+                  status: 400,
+                  message: "Bad request"
+               })
             }
 
          } else {
