@@ -607,7 +607,7 @@ module.exports = {
          const foundForklift = await model.foundForklift(id)
 
          if (foundForklift) {
-            foundForklift?.forklift_images_name.forEach((e) => {
+            foundForklift?.forklift_images_name?.forEach((e) => {
                new FS(
                   path.resolve(
                      __dirname,
