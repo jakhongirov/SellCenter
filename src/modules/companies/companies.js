@@ -289,6 +289,7 @@ module.exports = {
 
          if (foundCompany) {
             const deleteCompany = await model.deleteCompany(id)
+            
             if (deleteCompany) {
                const editUserCompany = await model.editUserCompany(deleteCompany.user_id)
 
