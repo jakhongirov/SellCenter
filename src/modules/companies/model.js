@@ -71,15 +71,6 @@ const DELETE_COMPANY = `
    RETURNING *; 
 `;
 
-const UPDATE_USER_COMPANY = `
-   UPDATE
-      users
-   SET
-      user_company = false
-   WHERE
-      user_id = $1;
-`;
-
 const FOUND_BY_USER = `
    SELECT
       *
@@ -87,6 +78,23 @@ const FOUND_BY_USER = `
       user_companies
    WHERE
       user_id = $1;
+`;
+
+const FOUND_USER_BY_ID = `
+   SELECT
+      *
+   FROM
+      users
+   WHERE
+      user_id = $1;
+`;
+
+const DELETE_USER = `
+   DELETE FROM
+      users
+   WHERE
+      user_id = $1
+   RETURNING *;
 `;
 
 const ADD_COMPANY = `
@@ -203,7 +211,8 @@ const editCompany = (
 const editPhoto = (company_id, company_img_url, company_img_name) => fetch(EDIT_PHOTO, company_id, company_img_url, company_img_name)
 const deleteCompany = (company_id) => fetch(DELETE_COMPANY, company_id)
 const foundByUserId = (user_id) => fetch(FOUND_BY_USER, user_id)
-const editUserCompany = (user_id) => fetch(UPDATE_USER_COMPANY, user_id)
+const foundUserById = (user_id) => fetch(FOUND_USER_BY_ID, user_id)
+const deleteUser = (user_id) => fetch(DELETE_USER, user_id)
 
 module.exports = {
    companiesListAdmin,
@@ -215,5 +224,6 @@ module.exports = {
    foundCompany,
    deleteCompany,
    foundByUserId,
-   editUserCompany
+   foundUserById,
+   deleteUser
 }

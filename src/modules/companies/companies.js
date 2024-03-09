@@ -286,26 +286,23 @@ module.exports = {
       try {
          const { id } = req.params
          const foundCompany = await model.foundCompany(id)
+         const foundUserById = await model.foundUserById(foundCompany?.user_id)
 
-         if (foundCompany) {
+         if (foundCompany && foundUserById) {
             const deleteCompany = await model.deleteCompany(id)
-            
-            if (deleteCompany) {
-               const editUserCompany = await model.editUserCompany(deleteCompany.user_id)
 
-               if (editUserCompany) {
-                  return res.json({
-                     status: 200,
-                     message: "Success",
-                     data: deleteCompany
-                  })
-               } else {
-                  return res.json({
-                     status: 400,
-                     message: "Bad request"
-                  })
-               }
+            if (foundUserById?.user_image_name) {
+               const deleteOldImg = new FS(path.resolve(__dirname, '..', '..', '..', 'public', 'images', `${foundUserById?.user_image_name}`))
+               deleteOldImg.delete()
+            }
+            const deleteUser = await model.deleteUser(foundCompany?.user_id)
 
+            if (deleteCompany && deleteUser) {
+               return res.json({
+                  status: 200,
+                  message: "Success",
+                  data: deleteCompany
+               })
             } else {
                return res.json({
                   status: 400,
