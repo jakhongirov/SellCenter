@@ -465,7 +465,7 @@ module.exports = {
                trailer_img_name.push(e.filename);
             });
 
-            const addImage = await model.addImage(id, truck_img, truck_img_name)
+            const addImage = await model.addImage(id, trailer_img, trailer_img_name)
 
             if (addImage) {
                return res.json({
