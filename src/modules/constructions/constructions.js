@@ -354,7 +354,6 @@ module.exports = {
 
    PUT_CONSTRUCTION: async (req, res) => {
       try {
-         const uploadPhoto = req.files;
          const {
             id,
             machine_make,
@@ -412,9 +411,7 @@ module.exports = {
             machine_dealer_rating,
             user_id,
             user_phone,
-            user_email,
-            construction_img,
-            construction_img_name
+            user_email
          )
 
          if (updateConstruction) {
